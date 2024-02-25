@@ -65,7 +65,7 @@ namespace MultiSequenceLearning
         {
             var settings = new Dictionary<string, object>
             {
-                { "W", 15 },
+                { "W", 11 },
                 { "N", inputBits },
                 { "Radius", -1.0 },
                 { "MinVal", 0.0 },
