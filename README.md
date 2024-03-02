@@ -8,6 +8,8 @@ The code published here is experimental code implemented during my research at d
 
 ## Getting started
 To get started, please see <a href="https://github.com/ddobric/neocortexapi/blob/master/source/Documentation/gettingStarted.md">this document.</a>
+### Sequence Generator
+We have created a sequence generator that will help us to compose training and testing data set for the model. This sequence generator produce random sequences of uppercase letters and saves them into a text file. It utilizes a Random object to generate random numbers for selecting characters. The GenerateSequence method constructs a random sequence of uppercase letters of a specified length, while the GenerateMultiSequenceDataset method generates multiple sequences of random lengths within a given range. These methods use a StringBuilder to efficiently construct sequences and store them in an array. The SaveDatasetToFile method writes the generated dataset into a text file, labeling each sequence with an index.
 
 # References
 
