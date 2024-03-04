@@ -1,13 +1,11 @@
-[![license](https://img.shields.io/github/license/mashape/apistatus.svg?maxAge=2592000)](https://github.com/ddobric/htmdotnet/blob/master/LICENSE)
-[![buildStatus](https://github.com/ddobric/neocortexapi/workflows/.NET%20Core/badge.svg)](https://github.com/ddobric/neocortexapi/actions?query=workflow%3A%22.NET+Core%22)
+**Project Description**
 
-# Introduction
-This repository is the open source implementation of the Hierarchical Temporal Memory in C#/.NET Core. This repository contains set of libraries around **NeoCortext** API .NET Core library. **NeoCortex** API focuses implementation of _Hierarchical Temporal Memory Cortical Learning Algorithm_. Current version is first implementation of this algorithm on .NET platform. It includes the **Spatial Pooler**, **Temporal Pooler**, various encoders and **CorticalNetwork**  algorithms. Implementation of this library aligns to existing Python and JAVA implementation of HTM. Due similarities between JAVA and C#, current API of SpatialPooler in C# is very similar to JAVA API. However the implementation of future versions will include some API changes to API style, which is additionally more aligned to C# community.
-This repository also cotains first experimental implementation of distributed highly scalable HTM CLA based on Actor Programming Model.
-The code published here is experimental code implemented during my research at daenet and Frankfurt University of Applied Sciences. 
+*Objective:*
+The objective of this task is to analyze the previously impletemented sequence learing algoithm ans further improve the efficiency of the current implementation (for e.g, accuracy).
+The previous implementation was about learning the sequence of numbers, alphabets and images.In acse of numbers and alphabets, we provided a set of alphabets/numbers and it predicts the upcoming number or alphabet in the sequence whereas for image input, it tries to predict the object pedict in the image.
 
-## Getting started
-To get started, please see <a href="https://github.com/ddobric/neocortexapi/blob/master/source/Documentation/gettingStarted.md">this document.</a>
+
+
 ### Sequence Generator
 We have created a sequence generator that will help us to compose training and testing data set for the model. This sequence generator produce random sequences of uppercase letters and saves them into a text file. It utilizes a Random object to generate random numbers for selecting characters. The GenerateSequence method constructs a random sequence of uppercase letters of a specified length, while the GenerateMultiSequenceDataset method generates multiple sequences of random lengths within a given range. These methods use a StringBuilder to efficiently construct sequences and store them in an array. The SaveDatasetToFile method writes the generated dataset into a text file, labeling each sequence with an index.
 
