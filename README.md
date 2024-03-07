@@ -4,6 +4,9 @@
 The objective of this task is to analyze the previously impletemented sequence learing algoithm ans further improve the efficiency of the current implementation (for e.g, accuracy).
 The previous implementation was about learning the sequence of numbers, alphabets and images.In acse of numbers and alphabets, we provided a set of alphabets/numbers and it predicts the upcoming number or alphabet in the sequence whereas for image input, it tries to predict the object pedict in the image.
 
+# Flow Diagram #
+
+![alt text](<Flow diagram-1.png>)
 
 
 ### Sequence Generator
