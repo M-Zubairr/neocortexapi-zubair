@@ -104,13 +104,13 @@ namespace MultiSequenceLearning
 
             var lastPredictedValues = new List<string>(new string[] { "0" });
 
-            int maxCycles = 3500;
+            int maxCycles = 3000;
 
             //
             // Training SP to get stable. New-born stage.
             //
 
-            for (int i = 0; i < maxCycles && isInStableState == false; i++)
+            for (int i = 1; i < maxCycles && isInStableState == false; i++)
             {
                 matches = 0;
 
