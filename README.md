@@ -1,12 +1,16 @@
 **Project Description**
 
 *Objective:*
-The objective of this task is to analyze the previously impletemented sequence learing algoithm ans further improve the efficiency of the current implementation (for e.g, accuracy).
+The objective of this task is to analyze the previously impletemented sequence learing algoithm and further improve the efficiency of the current implementation (for e.g, accuracy).
 The previous implementation was about learning the sequence of numbers, alphabets and images.In acse of numbers and alphabets, we provided a set of alphabets/numbers and it predicts the upcoming number or alphabet in the sequence whereas for image input, it tries to predict the object pedict in the image.
 
 # Flow Diagram #
 
 ![alt text](<Flow diagram-1.png>)
+
+# Encoders #
+The encoder is a vital part of the HTM network, tasked with converting raw input data into a format that the system can comprehend and handle effectively. It achieves this by transforming the input data into binary vectors or sparse distributed representations (SDRs), which are then passed on to the spatial pooling process. Within this process, the encoder plays a key role in determining which bits should be set to one and which should be set to zero for a given input value, ensuring that important semantic details of the data are captured accurately. This is crucial because the HTM network operates on SDRs, which are binary vectors with only a small fraction of active bits. Therefore, the encoder's primary function is to convert various types of input data, such as continuous or discrete sensory data from sensors, into SDRs to facilitate effective processing by the HTM network.
+
 
 
 ### Sequence Generator
