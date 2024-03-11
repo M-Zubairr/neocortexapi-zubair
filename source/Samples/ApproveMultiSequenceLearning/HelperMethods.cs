@@ -124,6 +124,26 @@ namespace MultiSequenceLearning
                 })
                 .ToList();
         }
+        public static int[] ConvertToAscii(string[] characters)
+        {
+            List<int> asciiValues = new List<int>();
+
+            foreach (string character in characters)
+            {
+                if (character.Length == 1)
+                {
+                    int asciiValue = (int)character[0];
+                    asciiValues.Add(asciiValue);
+                }
+                else
+                {
+                    // Handle cases where the input is not a single character string
+                    Console.WriteLine($"Invalid input: '{character}' is not a single character string.");
+                }
+            }
+
+            return asciiValues.ToArray();
+        }
 
         private static int[] GenerateRandomSequence(int size, int startVal, int stopVal)
         {
