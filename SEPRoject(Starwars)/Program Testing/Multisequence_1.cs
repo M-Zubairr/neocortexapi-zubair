@@ -93,6 +93,7 @@ namespace MultiSequenceLearning
             // In this stage we want that SP get boosted and see all elements before we start learning with TM.
             // All would also work fine with TM in layer, but it would work much slower.
             // So, to improve the speed of experiment, we first ommit the TM and then after the newborn-stage we add it to the layer.
+            //Getting the alphabetic sequence 
             layer1.HtmModules.Add("encoder", encoder);
             layer1.HtmModules.Add("sp", sp);
 
@@ -112,7 +113,7 @@ namespace MultiSequenceLearning
 
             for (int i = 1; i < maxCycles && isInStableState == false; i++)
             {
-                matches = 0;
+                matches = 1;
 
                 cycle++;
 
