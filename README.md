@@ -10,6 +10,20 @@ The previous implementation was about learning the sequence of numbers, alphabet
 
 # Encoders #
 The encoder is a vital part of the HTM network, tasked with converting raw input data into a format that the system can comprehend and handle effectively. It achieves this by transforming the input data into binary vectors or sparse distributed representations (SDRs), which are then passed on to the spatial pooling process. Within this process, the encoder plays a key role in determining which bits should be set to one and which should be set to zero for a given input value, ensuring that important semantic details of the data are captured accurately. This is crucial because the HTM network operates on SDRs, which are binary vectors with only a small fraction of active bits. Therefore, the encoder's primary function is to convert various types of input data, such as continuous or discrete sensory data from sensors, into SDRs to facilitate effective processing by the HTM network.
+# Types of Encoders #
+There are severl different typesof encoders but scalar encoders and HTM encoders are fundamental components of HTM systems, enabling the conversion of diverse types of input data into sparse distributed representations for processing and analysis by HTM algorithms.
+
+Scalar Encoders:
+
+Scalar encoders are used in HTM systems to encode scalar (single-valued) data into sparse distributed representations (SDRs), which are patterns of 1s and 0s where only a small fraction of the bits are active. Scalar encoders convert scalar values (such as numerical data) into SDRs, which are then processed by HTM algorithms.
+Scalar values are mapped onto the SDR in such a way that similar values have similar SDRs, enabling the HTM system to recognize patterns and anomalies in the data.
+
+HTM Encoders:
+
+HTM encoders are specifically designed to encode different types of sensory data into sparse distributed representations suitable for processing by HTM algorithms. HTM encoders include scalar encoders for encoding scalar data, as well as encoders for encoding more complex data types such as temporal sequences.
+HTM encoders are crucial in the HTM framework for transforming various types of input data (e.g., scalar values, spatial patterns, temporal sequences) into representations that can be efficiently processed by HTM algorithms, allowing the system to learn and recognize patterns in the data.
+
+
 
 
 
