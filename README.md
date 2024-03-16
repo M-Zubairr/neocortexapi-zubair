@@ -22,6 +22,9 @@ HTM Encoders:
 
 HTM encoders are specifically designed to encode different types of sensory data into sparse distributed representations suitable for processing by HTM algorithms. HTM encoders include scalar encoders for encoding scalar data, as well as encoders for encoding more complex data types such as temporal sequences.
 HTM encoders are crucial in the HTM framework for transforming various types of input data (e.g., scalar values, spatial patterns, temporal sequences) into representations that can be efficiently processed by HTM algorithms, allowing the system to learn and recognize patterns in the data.
+# HTM Prediction Engine #
+The HTM prediction engine is a key component of the HTM framework. It is designed to analyze and make predictions based on time-series data. The prediction engine learns temporal patterns in data by forming connections between active neurons in a hierarchical structure.
+The HTM prediction engine operates by continuously processing incoming data, learning from patterns, and making predictions about future states. 
 
 
 
