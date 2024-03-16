@@ -47,4 +47,4 @@ S10: XLKZYUNCVEAZK
 
 + Now, we aim to gain a clear understanding of its underlying mechanisms and algorithms for sequence processing.
 
-+ And, we are working on it. 
++ And, we are working on it. ..
