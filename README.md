@@ -25,9 +25,9 @@ HTM encoders are crucial in the HTM framework for transforming various types of 
 # HTM Prediction Engine #
 The HTM prediction engine is a key component of the HTM framework. It is designed to analyze and make predictions based on time-series data. The prediction engine learns temporal patterns in data by forming connections between active neurons in a hierarchical structure.
 The HTM prediction engine operates by continuously processing incoming data, learning from patterns, and making predictions about future states. 
-
-
-
+# SDR (Sparse Distributed Representation) #
+Sparse Distributed Representation is a method of representing data where each item is encoded by the activity of a large number of units, but only a small fraction of those units are active at any given time. This representation is often used in neural networks and models of the brain because it can efficiently encode complex patterns while maintaining sparsity, which means that only a small percentage of units are active at once.
+Sparse Distributed Representation (SDR) works by encoding information in high-dimensional vectors where only a small fraction of the elements are active (have a value of 1) at any given time, while the rest are inactive (have a value of 0). 
 
 
 ### Sequence Generator
