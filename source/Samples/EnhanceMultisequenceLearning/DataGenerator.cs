@@ -53,4 +53,26 @@ namespace EnhanceMultisequenceLearning
         }
 
     }
+
+    /// <summary>
+    /// Generates a sequence of random integers within a specified range.
+    /// </summary>
+    /// <param name="length">The length of the sequence.</param>
+    /// <returns>An array of integers representing the generated number sequence.</returns>
+    public static int[] GenerateNumberSequence(int length)
+    {
+        if (length <= 0)
+            throw new ArgumentException("Length must be greater than zero.", nameof(length));
+
+        int[] sequence = new int[length];
+
+        for (int i = 0; i < length; i++)
+        {
+            sequence[i] = random.Next(50);
+        }
+
+        Array.Sort(sequence);
+        return sequence;
+    }
+
 }
