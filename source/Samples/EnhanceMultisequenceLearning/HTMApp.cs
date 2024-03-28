@@ -87,5 +87,36 @@ namespace EnhanceMultisequenceLearning
             // Write reports to file
             FileManager.WriteReport(reports, basePath);
         }
+
+        public void Start()
+        {
+            // Welcome message
+            Console.WriteLine("Welcome to HTM Model Trainer!");
+
+            // Get the type of data to train the model on
+            string dataType = GetDataType();
+
+            // Get the number of datasets to train
+            int numDatasets = GetNumberOfDatasets();
+
+            // Generate file names for the datasets
+            var datasetFiles = GenerateDatasetFiles(numDatasets);
+
+            // Get user choice for creating new datasets or using existing ones
+            int choice = GetDatasetOption();
+
+            // Process user choice
+            if (choice == 1)
+            {
+                // Create new datasets
+                CreateNewDatasets(dataType, datasetFiles);
+            }
+            else if (choice != 2)
+            {
+                // Invalid choice, exiting
+                Console.WriteLine("Invalid choice. Exiting...");
+                return;
+            }
+
+        }
     }
-}
