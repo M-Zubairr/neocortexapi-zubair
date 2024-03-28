@@ -31,7 +31,7 @@ namespace EnhanceMultisequenceLearning
             return sequence;
         }
 
-        /// <summary>
+        /// <summary>///
         /// Generates multiple number sequences of varying lengths.
         /// </summary>
         /// <param name="numSequences">The number of sequences to generate.</param>
