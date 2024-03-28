@@ -123,5 +123,21 @@ namespace EnhanceMultisequenceLearning
             return filenamesArray;
         }
 
+        /// <summary>
+        /// Saves the dataset in 'dataset' folder in BasePath of application
+        /// </summary>
+        public static string SaveDataset(List<Sequence> sequences)
+        {
+            string basePath = AppDomain.CurrentDomain.BaseDirectory;
+            string datasetFolder = Path.Combine(basePath, "dataset");
+            Directory.CreateDirectory(datasetFolder); // CreateDirectory is safe to call if directory exists
+            string datasetPath = Path.Combine(datasetFolder, $"dataset_{DateTime.Now.Ticks}.json");
+
+            Console.WriteLine("Saving dataset...");
+            File.WriteAllText(datasetPath, JsonConvert.SerializeObject(sequences));
+            return datasetPath;
+        }
+
+
     }
 }
