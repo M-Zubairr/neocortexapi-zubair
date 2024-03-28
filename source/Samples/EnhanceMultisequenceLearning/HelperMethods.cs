@@ -1,4 +1,5 @@
-﻿using NeoCortexApi.Encoders;
+﻿using EnhanceMultisequenceLearning.Data;
+using NeoCortexApi.Encoders;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,23 @@ namespace EnhanceMultisequenceLearning
 {
     public class HelperMethods
     {
+
+        // Constants for default settings
+        private const int DefaultRandomSeed = 42;
+
+        // Avoid magic numbers in your code
+        private const int DefaultCellsPerColumn = 25;
+        private const double DefaultGlobalInhibitionDensity = 0.02;
+        private const double DefaultPotentialRadiusFactor = 0.15;
+        private const double DefaultMaxSynapsesPerSegmentFactor = 0.02;
+        private const double DefaultMaxBoost = 10.0;
+        private const int DefaultDutyCyclePeriod = 25;
+        private const double DefaultMinPctOverlapDutyCycles = 0.75;
+        private const int DefaultActivationThreshold = 15;
+        private const double DefaultConnectedPermanence = 0.5;
+        private const double DefaultPermanenceDecrement = 0.25;
+        private const double DefaultPermanenceIncrement = 0.15;
+        private const double DefaultPredictedSegmentDecrement = 0.1;
         /// <summary>
         /// Get the encoder with settings
         /// </summary>
