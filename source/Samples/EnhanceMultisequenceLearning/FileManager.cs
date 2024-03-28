@@ -117,5 +117,34 @@ namespace EnhanceMultisequenceLearning
             }
         }
 
+
+        /// <summary>
+        /// Ensures that a directory exists; if not, creates it.
+        /// </summary>
+        /// <param name="path">The directory path.</param>
+        /// <returns>The provided directory path.</returns>
+        private static string EnsureDirectory(string path)
+        {
+            if (!Directory.Exists(path))
+                Directory.CreateDirectory(path);
+            return path;
+        }
+        /// <summary>
+        /// Writes the content of a report to a StreamWriter.
+        /// </summary>
+        /// <param name="sw">The StreamWriter to write to.</param>
+        /// <param name="report">The report to write.</param>
+        private static void WriteReportContent(StreamWriter sw, Report report)
+        {
+            sw.WriteLine("------------------------------");
+            sw.WriteLine($"Using test sequence: {report.SequenceName} -> {string.Join("-", report.SequenceData)}");
+            foreach (string log in report.PredictionLog)
+            {
+                sw.WriteLine($"\t{log}");
+            }
+            sw.WriteLine($"\tAccuracy: {report.Accuracy}%");
+            sw.WriteLine("------------------------------");
+        }
+
     }
 }
