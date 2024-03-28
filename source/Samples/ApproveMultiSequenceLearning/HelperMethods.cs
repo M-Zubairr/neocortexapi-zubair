@@ -65,7 +65,7 @@ namespace MultiSequenceLearning
         {
             var settings = new Dictionary<string, object>
             {
-                { "W", 15 },
+                { "W", 11 },
                 { "N", inputBits },
                 { "Radius", -1.0 },
                 { "MinVal", 0.0 },
@@ -123,6 +123,26 @@ namespace MultiSequenceLearning
                     data = GenerateRandomSequence(size, startVal, stopVal)
                 })
                 .ToList();
+        }
+        public static int[] ConvertToAscii(string[] characters)
+        {
+            List<int> asciiValues = new List<int>();
+
+            foreach (string character in characters)
+            {
+                if (character.Length == 1)
+                {
+                    int asciiValue = (int)character[0];
+                    asciiValues.Add(asciiValue);
+                }
+                else
+                {
+                    // Handle cases where the input is not a single character string
+                    Console.WriteLine($"Invalid input: '{character}' is not a single character string.");
+                }
+            }
+
+            return asciiValues.ToArray();
         }
 
         private static int[] GenerateRandomSequence(int size, int startVal, int stopVal)
