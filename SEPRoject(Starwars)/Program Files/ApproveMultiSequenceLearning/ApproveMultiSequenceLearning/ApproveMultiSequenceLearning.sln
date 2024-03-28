@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34616.47
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Enhance MultiSequenceLearning", "Enhance MultiSequenceLearning.csproj", "{F386C817-104D-483D-81E1-37FCE241B563}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Approve MultiSequenceLearning", "Approve MultiSequenceLearning.csproj", "{F386C817-104D-483D-81E1-37FCE241B563}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NeoCortexApi", "D:\MS Information Technology\Software Engineering\Project Repo\neocortexapi-zubair\source\NeoCortexApi\NeoCortexApi.csproj", "{F84313EF-F42B-4C27-B3BB-F379D661A948}"
 EndProject
