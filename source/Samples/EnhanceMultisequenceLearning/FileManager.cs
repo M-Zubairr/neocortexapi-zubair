@@ -97,5 +97,25 @@ namespace EnhanceMultisequenceLearning
                 return new List<T>();
             }
         }
+
+        /// <summary>
+        /// Writes reports to a file.
+        /// </summary>
+        /// <param name="reports">The reports to be written.</param>
+        /// <param name="basePath">The base path where the reports will be saved.</param>
+        public static void WriteReport(List<Report> reports, string basePath)
+        {
+            string reportFolder = EnsureDirectory(Path.Combine(basePath, ReportFolder));
+            string reportPath = Path.Combine(reportFolder, $"report_{DateTime.Now.Ticks}.txt");
+
+            using (StreamWriter sw = File.CreateText(reportPath))
+            {
+                foreach (Report report in reports)
+                {
+                    WriteReportContent(sw, report);
+                }
+            }
+        }
+
     }
 }
