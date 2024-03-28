@@ -118,5 +118,13 @@ namespace EnhanceMultisequenceLearning
                 return;
             }
 
+            // Train models based on the datasets
+            TrainModels(numDatasets, datasetFiles, dataType);
+
+            // Wait for user input before exiting
+            Console.ReadLine();
         }
+
+
     }
+}
