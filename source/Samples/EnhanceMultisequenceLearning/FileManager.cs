@@ -1,4 +1,6 @@
-﻿using System;
+﻿using EnhanceMultisequenceLearning.Data;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -66,6 +68,34 @@ namespace EnhanceMultisequenceLearning
                 writer.WriteLine($"{{\"name\": \"{prefix}{i + 1}\", \"data\": \"{dataset[i].Substring(startIndex, length)}\"}}");
             }
             writer.WriteLine("]");
+        }
+
+        /// <summary>
+        /// Reads a dataset from a file and deserializes it to the specified type.
+        /// </summary>
+        /// <typeparam name="T">The type of data to deserialize.</typeparam>
+        /// <param name="basePath">The base path where the dataset is located.</param>
+        /// <param name="filename">The name of the file containing the dataset.</param>
+        /// <returns>The deserialized dataset.</returns>
+        public static List<T> ReadDataset<T>(string basePath, string filename)
+        {
+            // Determine the dataset path based on the type T
+            string datasetPath = Path.Combine(basePath, DatasetFolder, filename);
+            if (typeof(T) == typeof(Sequence))
+                datasetPath = Path.Combine(basePath, $"{DatasetFolder}/numbers", filename);
+            else
+                datasetPath = Path.Combine(basePath, $"{DatasetFolder}/alphabets", filename);
+
+            try
+            {
+                Console.WriteLine($"Reading Dataset: {datasetPath}");
+                return JsonConvert.DeserializeObject<List<T>>(File.ReadAllText(datasetPath));
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error reading dataset: {ex.Message}");
+                return new List<T>();
+            }
         }
     }
 }
