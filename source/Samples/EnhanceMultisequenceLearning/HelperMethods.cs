@@ -103,5 +103,25 @@ namespace EnhanceMultisequenceLearning
             Array.Copy(array, startIndex, subArray, 0, length);
             return subArray;
         }
+
+        // <summary>
+        /// Generates filenames for datasets based on the given number.
+        /// </summary>
+        /// <param name="numOfFiles">The number of files to generate filenames for.</param>
+        /// <returns>An array of string arrays containing filenames for each dataset.</returns>
+        public static string[][] GenerateFileNames(int numOfFiles)
+        {
+            if (numOfFiles < 0)
+                throw new ArgumentException();
+
+            string[][] filenamesArray = new string[numOfFiles][];
+            for (int i = 0; i < numOfFiles; i++)
+            {
+                filenamesArray[i] = [$"dataset_0{i + 1}", $"eval_0{i + 1}", $"test_0{i + 1}"];
+            }
+
+            return filenamesArray;
+        }
+
     }
 }
