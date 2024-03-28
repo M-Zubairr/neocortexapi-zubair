@@ -9,6 +9,25 @@ namespace EnhanceMultisequenceLearning
     public class HelperMethods
     {
         /// <summary>
+     /// Get the encoder with settings
+     /// </summary>
+        public static EncoderBase GetEncoderForAlphabetSequence(int inputBits)
+        {
+            var settings = new Dictionary<string, object>
+    {
+        { "W", 15 },
+        { "N", inputBits },
+        { "Radius", -1.0 },
+        { "MinVal", 97.0 },
+        { "Periodic", false },
+        { "Name", "scalar" },
+        { "ClipInput", false },
+        { "MaxVal", 122.0 }
+    };
+
+            return new ScalarEncoder(settings);
+        }
+        /// <summary>
         /// Transforms a list of SequenceString into a list of Sequence.
         /// </summary>
         /// <param name="data">The list of SequenceString to transform.</param>
