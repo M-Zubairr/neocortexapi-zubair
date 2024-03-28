@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NeoCortexApi.Encoders;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,21 +10,21 @@ namespace EnhanceMultisequenceLearning
     public class HelperMethods
     {
         /// <summary>
-     /// Get the encoder with settings
-     /// </summary>
+        /// Get the encoder with settings
+        /// </summary>
         public static EncoderBase GetEncoderForAlphabetSequence(int inputBits)
         {
             var settings = new Dictionary<string, object>
-    {
-        { "W", 15 },
-        { "N", inputBits },
-        { "Radius", -1.0 },
-        { "MinVal", 97.0 },
-        { "Periodic", false },
-        { "Name", "scalar" },
-        { "ClipInput", false },
-        { "MaxVal", 122.0 }
-    };
+            {
+                { "W", 15 },
+                { "N", inputBits },
+                { "Radius", -1.0 },
+                { "MinVal", 97.0 },
+                { "Periodic", false },
+                { "Name", "scalar" },
+                { "ClipInput", false },
+                { "MaxVal", 122.0 }
+            };
 
             return new ScalarEncoder(settings);
         }
@@ -66,6 +67,23 @@ namespace EnhanceMultisequenceLearning
             }
 
             return asciiValues.ToArray();
+        }
+        // <summary>
+        /// Retrieves a subarray from the given array.
+        /// </summary>
+        /// <typeparam name="T">The type of elements in the array.</typeparam>
+        /// <param name="array">The source array.</param>
+        /// <param name="startIndex">The starting index of the subarray.</param>
+        /// <param name="length">The length of the subarray.</param>
+        /// <returns>A subarray containing elements from the source array.</returns>
+        public static T[] GetSubArray<T>(T[] array, int startIndex, int length)
+        {
+            if (startIndex < 0 || startIndex >= array.Length || length <= 0 || startIndex + length > array.Length)
+                throw new ArgumentException("Invalid startIndex or length.");
+
+            T[] subArray = new T[length];
+            Array.Copy(array, startIndex, subArray, 0, length);
+            return subArray;
         }
     }
 }
