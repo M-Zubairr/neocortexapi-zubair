@@ -11,53 +11,46 @@ namespace EnhanceMultisequenceLearning
         private static Random random = new Random();
 
         /// <summary>
-        /// Generates a sequence of random uppercase alphabet characters of a given length.
+        /// Generates a sequence of random integers within a specified range.
         /// </summary>
         /// <param name="length">The length of the sequence.</param>
-        /// <returns>A string representing the generated alphabet sequence.</returns>
-        public static string GenerateAlphabetSequence(int length)
+        /// <returns>An array of integers representing the generated number sequence.</returns>
+        public static int[] GenerateNumberSequence(int length)
         {
             if (length <= 0)
                 throw new ArgumentException("Length must be greater than zero.", nameof(length));
 
-            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-            char[] sequence = new char[length];
+            int[] sequence = new int[length];
 
             for (int i = 0; i < length; i++)
             {
-                var randomChar = chars[random.Next(chars.Length)];
-                if (!sequence.Contains(randomChar))
-                    sequence[i] = randomChar;
-                else
-                    i--;
+                sequence[i] = random.Next(50);
             }
 
             Array.Sort(sequence);
-            return new string(sequence.Distinct().ToArray());
+            return sequence;
         }
 
         /// <summary>
-        /// Generates multiple alphabet sequences of varying lengths.
+        /// Generates multiple number sequences of varying lengths.
         /// </summary>
         /// <param name="numSequences">The number of sequences to generate.</param>
         /// <param name="minLength">The minimum length of each sequence.</param>
         /// <param name="maxLength">The maximum length of each sequence.</param>
-        /// <returns>An array of strings representing the generated alphabet sequences.</returns>
-        public static string[] GenerateMultiSequenceDatasetForAlphabets(int numSequences, int minLength, int maxLength)
+        /// <returns>An array of arrays of integers representing the generated number sequences.</returns>
+        public static int[][] GenerateMultiSequenceDatasetForNumbers(int numSequences, int minLength, int maxLength)
         {
-            if (numSequences < 1)
+            if (numSequences < 1 || minLength < 1 || maxLength < 1)
                 throw new ArgumentException();
 
-            if (minLength < 1 || maxLength < 1)
-                throw new ArgumentException();
-
-            string[] dataset = new string[numSequences];
+            int[][] dataset = new int[numSequences][];
             for (int i = 0; i < numSequences; i++)
             {
                 int length = random.Next(minLength, maxLength + 1);
-                dataset[i] = GenerateAlphabetSequence(length);
+                dataset[i] = GenerateNumberSequence(length);
             }
             return dataset;
         }
+
     }
 }
