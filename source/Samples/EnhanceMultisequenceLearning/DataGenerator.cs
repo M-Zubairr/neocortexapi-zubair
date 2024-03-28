@@ -75,4 +75,26 @@ namespace EnhanceMultisequenceLearning
         return sequence;
     }
 
+    /// <summary>
+    /// Generates multiple number sequences of varying lengths.
+    /// </summary>
+    /// <param name="numSequences">The number of sequences to generate.</param>
+    /// <param name="minLength">The minimum length of each sequence.</param>
+    /// <param name="maxLength">The maximum length of each sequence.</param>
+    /// <returns>An array of arrays of integers representing the generated number sequences.</returns>
+    public static int[][] GenerateMultiSequenceDatasetForNumbers(int numSequences, int minLength, int maxLength)
+    {
+        if (numSequences < 1 || minLength < 1 || maxLength < 1)
+            throw new ArgumentException();
+
+        int[][] dataset = new int[numSequences][];
+        for (int i = 0; i < numSequences; i++)
+        {
+            int length = random.Next(minLength, maxLength + 1);
+            dataset[i] = GenerateNumberSequence(length);
+        }
+        return dataset;
+    }
+
+
 }
