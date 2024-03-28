@@ -7,4 +7,10 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\neocortexAPI\neocortexapi-master\source\NeoCortexApi\NeoCortexApi.csproj" />
+    <ProjectReference Include="..\..\..\..\neocortexAPI\neocortexapi-master\source\NeoCortexEntities\NeoCortexEntities.csproj" />
+    <ProjectReference Include="..\..\..\..\neocortexAPI\neocortexapi-master\source\NeoCortexUtils\NeoCortexUtils.csproj" />
+  </ItemGroup>
+
 </Project>
