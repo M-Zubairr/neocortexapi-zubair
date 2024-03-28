@@ -17,7 +17,7 @@ namespace MultiSequenceLearning
     {
         // Constants for default settings
         private const int DefaultRandomSeed = 42;
-        private const double MaxScalarValue = 20.0;
+        private const double MaxScalarValue = 122.0;
 
         // Avoid magic numbers in your code
         private const int DefaultCellsPerColumn = 25;
@@ -41,7 +41,7 @@ namespace MultiSequenceLearning
             return new HtmConfig(new int[] { inputBits }, new int[] { numColumns })
             {
                 Random = new ThreadSafeRandom(DefaultRandomSeed),
-                CellsPerColumn = DefaultCellsPerColumn,
+                CellsPerColumn = 32,
                 GlobalInhibition = true,
                 LocalAreaDensity = -1,
                 NumActiveColumnsPerInhArea = DefaultGlobalInhibitionDensity * numColumns,
@@ -65,10 +65,10 @@ namespace MultiSequenceLearning
         {
             var settings = new Dictionary<string, object>
             {
-                { "W", 11 },
+                { "W", 15 },
                 { "N", inputBits },
                 { "Radius", -1.0 },
-                { "MinVal", 0.0 },
+                { "MinVal", 97.0 },
                 { "Periodic", false },
                 { "Name", "scalar" },
                 { "ClipInput", false },
@@ -124,22 +124,15 @@ namespace MultiSequenceLearning
                 })
                 .ToList();
         }
-        public static int[] ConvertToAscii(string[] characters)
+
+        public static int[] ConvertToAscii(string characters)
         {
             List<int> asciiValues = new List<int>();
 
-            foreach (string character in characters)
+            foreach (char character in characters.ToLower())
             {
-                if (character.Length == 1)
-                {
-                    int asciiValue = (int)character[0];
-                    asciiValues.Add(asciiValue);
-                }
-                else
-                {
-                    // Handle cases where the input is not a single character string
-                    Console.WriteLine($"Invalid input: '{character}' is not a single character string.");
-                }
+                int asciiValue = (int)character;
+                asciiValues.Add(asciiValue);
             }
 
             return asciiValues.ToArray();
