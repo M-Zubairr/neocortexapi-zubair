@@ -1,13 +1,37 @@
-[![license](https://img.shields.io/github/license/mashape/apistatus.svg?maxAge=2592000)](https://github.com/ddobric/htmdotnet/blob/master/LICENSE)
-[![buildStatus](https://github.com/ddobric/neocortexapi/workflows/.NET%20Core/badge.svg)](https://github.com/ddobric/neocortexapi/actions?query=workflow%3A%22.NET+Core%22)
+**Project Description**
 
-# Introduction
-This repository is the open source implementation of the Hierarchical Temporal Memory in C#/.NET Core. This repository contains set of libraries around **NeoCortext** API .NET Core library. **NeoCortex** API focuses implementation of _Hierarchical Temporal Memory Cortical Learning Algorithm_. Current version is first implementation of this algorithm on .NET platform. It includes the **Spatial Pooler**, **Temporal Pooler**, various encoders and **CorticalNetwork**  algorithms. Implementation of this library aligns to existing Python and JAVA implementation of HTM. Due similarities between JAVA and C#, current API of SpatialPooler in C# is very similar to JAVA API. However the implementation of future versions will include some API changes to API style, which is additionally more aligned to C# community.
-This repository also cotains first experimental implementation of distributed highly scalable HTM CLA based on Actor Programming Model.
-The code published here is experimental code implemented during my research at daenet and Frankfurt University of Applied Sciences. 
+*Objective:*
+The objective of this task is to analyze the previously impletemented sequence learing algoithm and further improve the efficiency of the current implementation (for e.g, accuracy).
+The previous implementation was about learning the sequence of numbers, alphabets and images.In acse of numbers and alphabets, we provided a set of alphabets/numbers and it predicts the upcoming number or alphabet in the sequence whereas for image input, it tries to predict the object pedict in the image.
 
-## Getting started
-To get started, please see <a href="https://github.com/ddobric/neocortexapi/blob/master/source/Documentation/gettingStarted.md">this document.</a>
+# Flow Diagram #
+
+![alt text](<Flow diagram-1.png>)
+
+# Encoders #
+The encoder is a vital part of the HTM network, tasked with converting raw input data into a format that the system can comprehend and handle effectively. It achieves this by transforming the input data into binary vectors or sparse distributed representations (SDRs), which are then passed on to the spatial pooling process. Within this process, the encoder plays a key role in determining which bits should be set to one and which should be set to zero for a given input value, ensuring that important semantic details of the data are captured accurately. This is crucial because the HTM network operates on SDRs, which are binary vectors with only a small fraction of active bits. Therefore, the encoder's primary function is to convert various types of input data, such as continuous or discrete sensory data from sensors, into SDRs to facilitate effective processing by the HTM network.
+# Types of Encoders #
+There are severl different typesof encoders but scalar encoders and HTM encoders are fundamental components of HTM systems, enabling the conversion of diverse types of input data into sparse distributed representations for processing and analysis by HTM algorithms.
+
+Scalar Encoders:
+
+Scalar encoders are used in HTM systems to encode scalar (single-valued) data into sparse distributed representations (SDRs), which are patterns of 1s and 0s where only a small fraction of the bits are active. Scalar encoders convert scalar values (such as numerical data) into SDRs, which are then processed by HTM algorithms.
+Scalar values are mapped onto the SDR in such a way that similar values have similar SDRs, enabling the HTM system to recognize patterns and anomalies in the data.
+
+HTM Encoders:
+
+HTM encoders are specifically designed to encode different types of sensory data into sparse distributed representations suitable for processing by HTM algorithms. HTM encoders include scalar encoders for encoding scalar data, as well as encoders for encoding more complex data types such as temporal sequences.
+HTM encoders are crucial in the HTM framework for transforming various types of input data (e.g., scalar values, spatial patterns, temporal sequences) into representations that can be efficiently processed by HTM algorithms, allowing the system to learn and recognize patterns in the data.
+# HTM Prediction Engine #
+The HTM prediction engine is a key component of the HTM framework. It is designed to analyze and make predictions based on time-series data. The prediction engine learns temporal patterns in data by forming connections between active neurons in a hierarchical structure.
+The HTM prediction engine operates by continuously processing incoming data, learning from patterns, and making predictions about future states. 
+# SDR (Sparse Distributed Representation) #
+Sparse Distributed Representation is a method of representing data where each item is encoded by the activity of a large number of units, but only a small fraction of those units are active at any given time. This representation is often used in neural networks and models of the brain because it can efficiently encode complex patterns while maintaining sparsity, which means that only a small percentage of units are active at once.
+Sparse Distributed Representation (SDR) works by encoding information in high-dimensional vectors where only a small fraction of the elements are active (have a value of 1) at any given time, while the rest are inactive (have a value of 0). 
+
+
+### Sequence Generator
+We have created a sequence generator that will help us to compose training and testing data set for the model. This sequence generator produce random sequences of uppercase letters and saves them into a text file. It utilizes a Random object to generate random numbers for selecting characters. The GenerateSequence method constructs a random sequence of uppercase letters of a specified length, while the GenerateMultiSequenceDataset method generates multiple sequences of random lengths within a given range. These methods use a StringBuilder to efficiently construct sequences and store them in an array. The SaveDatasetToFile method writes the generated dataset into a text file, labeling each sequence with an index.
 
 # References
 
