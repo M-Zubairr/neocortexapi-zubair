@@ -138,6 +138,46 @@ namespace EnhanceMultisequenceLearning
             return datasetPath;
         }
 
+        public static EncoderBase GetEncoderForNumberSequence(int inputBits)
+        {
+            var settings = new Dictionary<string, object>
+    {
+        { "W", 15 },
+        { "N", inputBits },
+        { "Radius", -1.0 },
+        { "MinVal", 0.0 },
+        { "Periodic", false },
+        { "Name", "scalar" },
+        { "ClipInput", false },
+        { "MaxVal", 50.0 }
+    };
+
+            return new ScalarEncoder(settings);
+        }
+
+        public static HtmConfig FetchHTMConfig(int inputBits, int numColumns)
+        {
+            return new HtmConfig(new int[] { inputBits }, new int[] { numColumns })
+            {
+                Random = new ThreadSafeRandom(DefaultRandomSeed),
+                CellsPerColumn = DefaultCellsPerColumn,
+                GlobalInhibition = true,
+                LocalAreaDensity = -1,
+                NumActiveColumnsPerInhArea = DefaultGlobalInhibitionDensity * numColumns,
+                PotentialRadius = (int)(DefaultPotentialRadiusFactor * inputBits),
+                MaxBoost = DefaultMaxBoost,
+                DutyCyclePeriod = DefaultDutyCyclePeriod,
+                MinPctOverlapDutyCycles = DefaultMinPctOverlapDutyCycles,
+                MaxSynapsesPerSegment = (int)(DefaultMaxSynapsesPerSegmentFactor * numColumns),
+                ActivationThreshold = DefaultActivationThreshold,
+                ConnectedPermanence = DefaultConnectedPermanence,
+                PermanenceDecrement = DefaultPermanenceDecrement,
+                PermanenceIncrement = DefaultPermanenceIncrement,
+                PredictedSegmentDecrement = DefaultPredictedSegmentDecrement
+            };
+        }
+
+
 
     }
 }
