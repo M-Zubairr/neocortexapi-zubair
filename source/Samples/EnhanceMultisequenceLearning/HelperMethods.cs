@@ -103,5 +103,81 @@ namespace EnhanceMultisequenceLearning
             Array.Copy(array, startIndex, subArray, 0, length);
             return subArray;
         }
+
+        // <summary>
+        /// Generates filenames for datasets based on the given number.
+        /// </summary>
+        /// <param name="numOfFiles">The number of files to generate filenames for.</param>
+        /// <returns>An array of string arrays containing filenames for each dataset.</returns>
+        public static string[][] GenerateFileNames(int numOfFiles)
+        {
+            if (numOfFiles < 0)
+                throw new ArgumentException();
+
+            string[][] filenamesArray = new string[numOfFiles][];
+            for (int i = 0; i < numOfFiles; i++)
+            {
+                filenamesArray[i] = [$"dataset_0{i + 1}", $"eval_0{i + 1}", $"test_0{i + 1}"];
+            }
+
+            return filenamesArray;
+        }
+
+        /// <summary>
+        /// Saves the dataset in 'dataset' folder in BasePath of application
+        /// </summary>
+        public static string SaveDataset(List<Sequence> sequences)
+        {
+            string basePath = AppDomain.CurrentDomain.BaseDirectory;
+            string datasetFolder = Path.Combine(basePath, "dataset");
+            Directory.CreateDirectory(datasetFolder); // CreateDirectory is safe to call if directory exists
+            string datasetPath = Path.Combine(datasetFolder, $"dataset_{DateTime.Now.Ticks}.json");
+
+            Console.WriteLine("Saving dataset...");
+            File.WriteAllText(datasetPath, JsonConvert.SerializeObject(sequences));
+            return datasetPath;
+        }
+
+        public static EncoderBase GetEncoderForNumberSequence(int inputBits)
+        {
+            var settings = new Dictionary<string, object>
+    {
+        { "W", 15 },
+        { "N", inputBits },
+        { "Radius", -1.0 },
+        { "MinVal", 0.0 },
+        { "Periodic", false },
+        { "Name", "scalar" },
+        { "ClipInput", false },
+        { "MaxVal", 50.0 }
+    };
+
+            return new ScalarEncoder(settings);
+        }
+
+        public static HtmConfig FetchHTMConfig(int inputBits, int numColumns)
+        {
+            return new HtmConfig(new int[] { inputBits }, new int[] { numColumns })
+            {
+                Random = new ThreadSafeRandom(DefaultRandomSeed),
+                CellsPerColumn = DefaultCellsPerColumn,
+                GlobalInhibition = true,
+                LocalAreaDensity = -1,
+                NumActiveColumnsPerInhArea = DefaultGlobalInhibitionDensity * numColumns,
+                PotentialRadius = (int)(DefaultPotentialRadiusFactor * inputBits),
+                MaxBoost = DefaultMaxBoost,
+                DutyCyclePeriod = DefaultDutyCyclePeriod,
+                MinPctOverlapDutyCycles = DefaultMinPctOverlapDutyCycles,
+                MaxSynapsesPerSegment = (int)(DefaultMaxSynapsesPerSegmentFactor * numColumns),
+                ActivationThreshold = DefaultActivationThreshold,
+                ConnectedPermanence = DefaultConnectedPermanence,
+                PermanenceDecrement = DefaultPermanenceDecrement,
+                PermanenceIncrement = DefaultPermanenceIncrement,
+                PredictedSegmentDecrement = DefaultPredictedSegmentDecrement
+            };
+        }
+
+
+
     }
 }
