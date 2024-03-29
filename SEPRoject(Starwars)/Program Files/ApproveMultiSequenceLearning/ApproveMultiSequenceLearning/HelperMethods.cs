@@ -33,6 +33,40 @@ namespace MultiSequenceLearning
         private const double DefaultPermanenceIncrement = 0.15;
         private const double DefaultPredictedSegmentDecrement = 0.1;
 
+        /*
+         
+        // Avoid magic numbers in your code
+        /* modified b z
+        private const int DefaultCellsPerColumn = 25;  --
+        private const double DefaultGlobalInhibitionDensity = 0.02;
+        private const double DefaultPotentialRadiusFactor = 0.15;  --
+        private const double DefaultMaxSynapsesPerSegmentFactor = 0.02;
+        private const double DefaultMaxBoost = 10.0;
+        private const int DefaultDutyCyclePeriod = 25;  --
+        private const double DefaultMinPctOverlapDutyCycles = 0.75;
+        private const int DefaultActivationThreshold = 15;
+        private const double DefaultConnectedPermanence = 0.5;
+        private const double DefaultPermanenceDecrement = 0.25;
+        private const double DefaultPermanenceIncrement = 0.15;
+        private const double DefaultPredictedSegmentDecrement = 0.1;
+        */
+
+        /*
+        private const int DefaultCellsPerColumn = 10;
+        private const double DefaultGlobalInhibitionDensity = 0.02;
+        private const double DefaultPotentialRadiusFactor = 0.1;
+        private const double DefaultMaxSynapsesPerSegmentFactor = 0.02;
+        private const double DefaultMaxBoost = 10.0;
+        private const int DefaultDutyCyclePeriod = 15;
+        private const double DefaultMinPctOverlapDutyCycles = 0.75;
+        private const int DefaultActivationThreshold = 15;
+        private const double DefaultConnectedPermanence = 0.5;
+        private const double DefaultPermanenceDecrement = 0.25;
+        private const double DefaultPermanenceIncrement = 0.15;
+        private const double DefaultPredictedSegmentDecrement = 0.1;
+
+        */
+
         /// <summary>
         /// HTM Config for creating Connections
         /// </summary>
