@@ -1,4 +1,4 @@
-﻿.using NeoCortexApi;
+﻿using NeoCortexApi;
 using NeoCortexApi.Classifiers;
 using NeoCortexApi.Encoders;
 using NeoCortexApi.Entities;
@@ -112,7 +112,6 @@ namespace NeoCortexApiSample
                 // Clear active and predictive cells.
                 //tm.Reset(mem);
             }, numOfCyclesToWaitOnChange: 50);
-
 
 
             SpatialPoolerMT sp = new SpatialPoolerMT(hpc);
