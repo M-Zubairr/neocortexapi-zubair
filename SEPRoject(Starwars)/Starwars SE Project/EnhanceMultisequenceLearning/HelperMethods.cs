@@ -1,16 +1,13 @@
-﻿using EnhanceMultisequenceLearning.Data;
+﻿using NeoCortexApi;
 using NeoCortexApi.Encoders;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using NeoCortexApi.Entities;
+using Newtonsoft.Json;
+using EnhanceMultisequenceLearning.Data;
 
 namespace EnhanceMultisequenceLearning
 {
     public class HelperMethods
     {
-
         // Constants for default settings
         private const int DefaultRandomSeed = 42;
 
@@ -27,6 +24,52 @@ namespace EnhanceMultisequenceLearning
         private const double DefaultPermanenceDecrement = 0.25;
         private const double DefaultPermanenceIncrement = 0.15;
         private const double DefaultPredictedSegmentDecrement = 0.1;
+
+        /// <summary>
+        /// HTM Config for creating Connections
+        /// </summary>
+        public static HtmConfig FetchHTMConfig(int inputBits, int numColumns)
+        {
+            return new HtmConfig(new int[] { inputBits }, new int[] { numColumns })
+            {
+                Random = new ThreadSafeRandom(DefaultRandomSeed),
+                CellsPerColumn = DefaultCellsPerColumn,
+                GlobalInhibition = true,
+                LocalAreaDensity = -1,
+                NumActiveColumnsPerInhArea = DefaultGlobalInhibitionDensity * numColumns,
+                PotentialRadius = (int)(DefaultPotentialRadiusFactor * inputBits),
+                MaxBoost = DefaultMaxBoost,
+                DutyCyclePeriod = DefaultDutyCyclePeriod,
+                MinPctOverlapDutyCycles = DefaultMinPctOverlapDutyCycles,
+                MaxSynapsesPerSegment = (int)(DefaultMaxSynapsesPerSegmentFactor * numColumns),
+                ActivationThreshold = DefaultActivationThreshold,
+                ConnectedPermanence = DefaultConnectedPermanence,
+                PermanenceDecrement = DefaultPermanenceDecrement,
+                PermanenceIncrement = DefaultPermanenceIncrement,
+                PredictedSegmentDecrement = DefaultPredictedSegmentDecrement
+            };
+        }
+
+        /// <summary>
+        /// Get the encoder with settings
+        /// </summary>
+        public static EncoderBase GetEncoderForNumberSequence(int inputBits)
+        {
+            var settings = new Dictionary<string, object>
+            {
+                { "W", 15 },
+                { "N", inputBits },
+                { "Radius", -1.0 },
+                { "MinVal", 0.0 },
+                { "Periodic", false },
+                { "Name", "scalar" },
+                { "ClipInput", false },
+                { "MaxVal", 50.0 }
+            };
+
+            return new ScalarEncoder(settings);
+        }
+
         /// <summary>
         /// Get the encoder with settings
         /// </summary>
@@ -46,22 +89,66 @@ namespace EnhanceMultisequenceLearning
 
             return new ScalarEncoder(settings);
         }
-        /// <summary>
-        /// Transforms a list of SequenceString into a list of Sequence.
-        /// </summary>
-        /// <param name="data">The list of SequenceString to transform.</param>
-        /// <returns>A list of Sequence objects.</returns>
-        public static List<Sequence> TransformData(List<SequenceString> data)
-        {
-            if (data == null)
-                throw new ArgumentNullException();
 
-            List<Sequence> transformedData = new List<Sequence>();
-            foreach (var x in data)
+        /// <summary>
+        /// Reads dataset from the file
+        /// </summary>
+        public static List<Sequence> ReadDataset(string path)
+        {
+            Console.WriteLine("Reading Sequence...");
+            try
             {
-                transformedData.Add(new Sequence() { name = x.name, data = HelperMethods.ConvertToAscii(x.data) });
+                string fileContent = File.ReadAllText(path);
+                return JsonConvert.DeserializeObject<List<Sequence>>(fileContent);
             }
-            return transformedData;
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Failed to read the dataset: {ex.Message}");
+                return new List<Sequence>(); // Return an empty list in case of failure
+            }
+        }
+
+        /// <summary>
+        /// Saves the dataset in 'dataset' folder in BasePath of application
+        /// </summary>
+        public static string SaveDataset(List<Sequence> sequences)
+        {
+            string basePath = AppDomain.CurrentDomain.BaseDirectory;
+            string datasetFolder = Path.Combine(basePath, "dataset");
+            Directory.CreateDirectory(datasetFolder); // CreateDirectory is safe to call if directory exists
+            string datasetPath = Path.Combine(datasetFolder, $"dataset_{DateTime.Now.Ticks}.json");
+
+            Console.WriteLine("Saving dataset...");
+            File.WriteAllText(datasetPath, JsonConvert.SerializeObject(sequences));
+            return datasetPath;
+        }
+
+        /// <summary>
+        /// Creates multiple sequences as per parameters
+        /// </summary>
+        public static List<Sequence> CreateSequences(int count, int size, int startVal, int stopVal)
+        {
+            return Enumerable.Range(1, count).Select(i =>
+                new Sequence
+                {
+                    name = $"S{i}",
+                    data = GenerateRandomSequence(size, startVal, stopVal)
+                })
+                .ToList();
+        }
+
+        private static int[] GenerateRandomSequence(int size, int startVal, int stopVal)
+        {
+            var rnd = new Random();
+            var sequence = new HashSet<int>();
+
+            while (sequence.Count < size)
+            {
+                int number = rnd.Next(startVal, stopVal + 1);
+                sequence.Add(number);
+            }
+
+            return sequence.OrderBy(n => n).ToArray();
         }
         /// <summary>
         /// Converts characters to their corresponding ASCII values.
@@ -87,24 +174,6 @@ namespace EnhanceMultisequenceLearning
             return asciiValues.ToArray();
         }
         // <summary>
-        /// Retrieves a subarray from the given array.
-        /// </summary>
-        /// <typeparam name="T">The type of elements in the array.</typeparam>
-        /// <param name="array">The source array.</param>
-        /// <param name="startIndex">The starting index of the subarray.</param>
-        /// <param name="length">The length of the subarray.</param>
-        /// <returns>A subarray containing elements from the source array.</returns>
-        public static T[] GetSubArray<T>(T[] array, int startIndex, int length)
-        {
-            if (startIndex < 0 || startIndex >= array.Length || length <= 0 || startIndex + length > array.Length)
-                throw new ArgumentException("Invalid startIndex or length.");
-
-            T[] subArray = new T[length];
-            Array.Copy(array, startIndex, subArray, 0, length);
-            return subArray;
-        }
-
-        // <summary>
         /// Generates filenames for datasets based on the given number.
         /// </summary>
         /// <param name="numOfFiles">The number of files to generate filenames for.</param>
@@ -122,62 +191,39 @@ namespace EnhanceMultisequenceLearning
 
             return filenamesArray;
         }
-
         /// <summary>
-        /// Saves the dataset in 'dataset' folder in BasePath of application
+        /// Transforms a list of SequenceString into a list of Sequence.
         /// </summary>
-        public static string SaveDataset(List<Sequence> sequences)
+        /// <param name="data">The list of SequenceString to transform.</param>
+        /// <returns>A list of Sequence objects.</returns>
+        public static List<Sequence> TransformData(List<SequenceString> data)
         {
-            string basePath = AppDomain.CurrentDomain.BaseDirectory;
-            string datasetFolder = Path.Combine(basePath, "dataset");
-            Directory.CreateDirectory(datasetFolder); // CreateDirectory is safe to call if directory exists
-            string datasetPath = Path.Combine(datasetFolder, $"dataset_{DateTime.Now.Ticks}.json");
+            if (data == null)
+                throw new ArgumentNullException();
 
-            Console.WriteLine("Saving dataset...");
-            File.WriteAllText(datasetPath, JsonConvert.SerializeObject(sequences));
-            return datasetPath;
-        }
-
-        public static EncoderBase GetEncoderForNumberSequence(int inputBits)
-        {
-            var settings = new Dictionary<string, object>
-    {
-        { "W", 15 },
-        { "N", inputBits },
-        { "Radius", -1.0 },
-        { "MinVal", 0.0 },
-        { "Periodic", false },
-        { "Name", "scalar" },
-        { "ClipInput", false },
-        { "MaxVal", 50.0 }
-    };
-
-            return new ScalarEncoder(settings);
-        }
-
-        public static HtmConfig FetchHTMConfig(int inputBits, int numColumns)
-        {
-            return new HtmConfig(new int[] { inputBits }, new int[] { numColumns })
+            List<Sequence> transformedData = new List<Sequence>();
+            foreach (var x in data)
             {
-                Random = new ThreadSafeRandom(DefaultRandomSeed),
-                CellsPerColumn = DefaultCellsPerColumn,
-                GlobalInhibition = true,
-                LocalAreaDensity = -1,
-                NumActiveColumnsPerInhArea = DefaultGlobalInhibitionDensity * numColumns,
-                PotentialRadius = (int)(DefaultPotentialRadiusFactor * inputBits),
-                MaxBoost = DefaultMaxBoost,
-                DutyCyclePeriod = DefaultDutyCyclePeriod,
-                MinPctOverlapDutyCycles = DefaultMinPctOverlapDutyCycles,
-                MaxSynapsesPerSegment = (int)(DefaultMaxSynapsesPerSegmentFactor * numColumns),
-                ActivationThreshold = DefaultActivationThreshold,
-                ConnectedPermanence = DefaultConnectedPermanence,
-                PermanenceDecrement = DefaultPermanenceDecrement,
-                PermanenceIncrement = DefaultPermanenceIncrement,
-                PredictedSegmentDecrement = DefaultPredictedSegmentDecrement
-            };
+                transformedData.Add(new Sequence() { name = x.name, data = HelperMethods.ConvertToAscii(x.data) });
+            }
+            return transformedData;
         }
+        // <summary>
+        /// Retrieves a subarray from the given array.
+        /// </summary>
+        /// <typeparam name="T">The type of elements in the array.</typeparam>
+        /// <param name="array">The source array.</param>
+        /// <param name="startIndex">The starting index of the subarray.</param>
+        /// <param name="length">The length of the subarray.</param>
+        /// <returns>A subarray containing elements from the source array.</returns>
+        public static T[] GetSubArray<T>(T[] array, int startIndex, int length)
+        {
+            if (startIndex < 0 || startIndex >= array.Length || length <= 0 || startIndex + length > array.Length)
+                throw new ArgumentException("Invalid startIndex or length.");
 
-
-
+            T[] subArray = new T[length];
+            Array.Copy(array, startIndex, subArray, 0, length);
+            return subArray;
+        }
     }
 }

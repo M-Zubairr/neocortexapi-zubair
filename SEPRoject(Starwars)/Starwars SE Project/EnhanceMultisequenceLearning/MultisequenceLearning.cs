@@ -1,20 +1,40 @@
-﻿using EnhanceMultisequenceLearning.Data;
+﻿using NeoCortexApi;
 using NeoCortexApi.Classifiers;
 using NeoCortexApi.Encoders;
 using NeoCortexApi.Entities;
 using NeoCortexApi.Network;
-using NeoCortexApi;
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using EnhanceMultisequenceLearning.Data;
 
 namespace EnhanceMultisequenceLearning
 {
-    public class MultisequenceLearning
+    /// <summary>
+    /// Implements an experiment that demonstrates how to learn sequences.
+    /// </summary>
+    public class MultiSequenceLearning
     {
+        /// <summary>
+        /// Runs the learning of sequences.
+        /// </summary>
+        /// <param name="sequences">Dictionary of sequences. KEY is the sewuence name, the VALUE is th elist of element of the sequence.</param>
+        public Predictor Run(List<Sequence> sequences, bool isNumberDataset, int index)
+        {
+            Console.WriteLine($"Hello NeocortexApi! Experiment {nameof(MultiSequenceLearning)} - Thread {index}");
+
+            int inputBits = 100;
+            int numColumns = 1024;
+
+            HtmConfig cfg = HelperMethods.FetchHTMConfig(inputBits, numColumns);
+
+            EncoderBase encoder;
+            if (isNumberDataset)
+                encoder = HelperMethods.GetEncoderForNumberSequence(inputBits);
+            else
+                encoder = HelperMethods.GetEncoderForAlphabetSequence(inputBits);
+
+            return RunExperiment(inputBits, cfg, encoder, sequences, index);
+        }
+
         /// <summary>
         ///
         /// </summary>
@@ -247,26 +267,48 @@ namespace EnhanceMultisequenceLearning
             return new Predictor(layer1, mem, cls);
         }
 
+
         /// <summary>
-        /// Runs the learning of sequences.
+        /// Gets the number of all unique inputs.
         /// </summary>
-        /// <param name="sequences">Dictionary of sequences. KEY is the sewuence name, the VALUE is th elist of element of the sequence.</param>
-        public Predictor Run(List<Sequence> sequences, bool isNumberDataset, int index)
+        /// <param name="sequences">Alle sequences.</param>
+        /// <returns></returns>
+        private int GetNumberOfInputs(List<Sequence> sequences)
         {
-            Console.WriteLine($"Hello NeocortexApi! Experiment {nameof(MultiSequenceLearning)} - Thread {index}");
+            int num = 0;
 
-            int inputBits = 100;
-            int numColumns = 1024;
+            foreach (var inputs in sequences)
+            {
+                //num += inputs.Value.Distinct().Count();
+                num += inputs.data.Length;
+            }
 
-            HtmConfig cfg = HelperMethods.FetchHTMConfig(inputBits, numColumns);
+            return num;
+        }
 
-            EncoderBase encoder;
-            if (isNumberDataset)
-                encoder = HelperMethods.GetEncoderForNumberSequence(inputBits);
-            else
-                encoder = HelperMethods.GetEncoderForAlphabetSequence(inputBits);
 
-            return RunExperiment(inputBits, cfg, encoder, sequences, index);
+        /// <summary>
+        /// Constracts the unique key of the element of an sequece. This key is used as input for HtmClassifier.
+        /// It makes sure that alle elements that belong to the same sequence are prefixed with the sequence.
+        /// The prediction code can then extract the sequence prefix to the predicted element.
+        /// </summary>
+        /// <param name="prevInputs"></param>
+        /// <param name="input"></param>
+        /// <param name="sequence"></param>
+        /// <returns></returns>
+        private static string GetKey(List<string> prevInputs, double input, string sequence)
+        {
+            string key = String.Empty;
+
+            for (int i = 0; i < prevInputs.Count; i++)
+            {
+                if (i > 0)
+                    key += "-";
+
+                key += (prevInputs[i]);
+            }
+            //Console.WriteLine($"GetKey={sequence}_{key}");
+            return $"{sequence}_{key}";
         }
     }
 }
