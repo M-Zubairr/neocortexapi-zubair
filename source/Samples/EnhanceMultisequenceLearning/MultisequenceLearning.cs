@@ -246,5 +246,27 @@ namespace EnhanceMultisequenceLearning
 
             return new Predictor(layer1, mem, cls);
         }
+
+        /// <summary>
+        /// Runs the learning of sequences.
+        /// </summary>
+        /// <param name="sequences">Dictionary of sequences. KEY is the sewuence name, the VALUE is th elist of element of the sequence.</param>
+        public Predictor Run(List<Sequence> sequences, bool isNumberDataset, int index)
+        {
+            Console.WriteLine($"Hello NeocortexApi! Experiment {nameof(MultiSequenceLearning)} - Thread {index}");
+
+            int inputBits = 100;
+            int numColumns = 1024;
+
+            HtmConfig cfg = HelperMethods.FetchHTMConfig(inputBits, numColumns);
+
+            EncoderBase encoder;
+            if (isNumberDataset)
+                encoder = HelperMethods.GetEncoderForNumberSequence(inputBits);
+            else
+                encoder = HelperMethods.GetEncoderForAlphabetSequence(inputBits);
+
+            return RunExperiment(inputBits, cfg, encoder, sequences, index);
+        }
     }
 }
