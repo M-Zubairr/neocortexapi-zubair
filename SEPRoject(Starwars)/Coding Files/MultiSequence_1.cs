@@ -12,14 +12,10 @@ using System.Linq;
 
 namespace NeoCortexApiSample
 {
-    /// <summary>
-    /// Implements an experiment that demonstrates how to learn sequences.
-    /// </summary>
+    
     public class MultiSequenceLearning
     {
-        /// <summary>
-        /// Runs the learning of sequences.
-        /// </summary>
+        
         /// <param name="sequences">Dictionary of sequences. KEY is the sewuence name, the VALUE is th elist of element of the sequence.</param>
         public Predictor Run(Dictionary<string, List<double>> sequences)
         {
@@ -74,9 +70,7 @@ namespace NeoCortexApiSample
             return RunExperiment(inputBits, cfg, encoder, sequences);
         }
 
-        /// <summary>
-        ///
-        /// </summary>
+        
         private Predictor RunExperiment(int inputBits, HtmConfig cfg, EncoderBase encoder, Dictionary<string, List<double>> sequences)
         {
             Stopwatch sw = new Stopwatch();
@@ -118,11 +112,9 @@ namespace NeoCortexApiSample
             sp.Init(mem);
             tm.Init(mem);
 
-            // Please note that we do not add here TM in the layer.
-            // This is omitted for practical reasons, because we first eneter the newborn-stage of the algorithm
+      
             // In this stage we want that SP get boosted and see all elements before we start learning with TM.
-            // All would also work fine with TM in layer, but it would work much slower.
-            // So, to improve the speed of experiment, we first ommit the TM and then after the newborn-stage we add it to the layer.
+            
             layer1.HtmModules.Add("encoder", encoder);
             layer1.HtmModules.Add("sp", sp);
 
@@ -136,9 +128,9 @@ namespace NeoCortexApiSample
             
             int maxCycles = 3500;
 
-            //
+           
             // Training SP to get stable. New-born stage.
-            //
+       
 
             for (int i = 0; i < maxCycles && isInStableState == false; i++)
             {
@@ -171,7 +163,7 @@ namespace NeoCortexApiSample
             // We activate here the Temporal Memory algorithm.
             layer1.HtmModules.Add("tm", tm);
 
-            //
+            
             // Loop over all sequences.
             foreach (var sequenceKeyPair in sequences)
             {
@@ -186,7 +178,7 @@ namespace NeoCortexApiSample
                 // Set on true if the system has learned the sequence with a maximum acurracy.
                 bool isLearningCompleted = false;
 
-                //
+                
                 // Now training with SP+TM. SP is pretrained on the given input pattern set.
                 for (int i = 0; i < maxCycles; i++)
                 {
@@ -211,9 +203,7 @@ namespace NeoCortexApiSample
                         if (previousInputs.Count > (maxPrevInputs + 1))
                             previousInputs.RemoveAt(0);
 
-                        // In the pretrained SP with HPC, the TM will quickly learn cells for patterns
-                        // In that case the starting sequence 4-5-6 might have the sam SDR as 1-2-3-4-5-6,
-                        // Which will result in returning of 4-5-6 instead of 1-2-3-4-5-6.
+                       
                         // HtmClassifier allways return the first matching sequence. Because 4-5-6 will be as first
                         // memorized, it will match as the first one.
                         if (previousInputs.Count < maxPrevInputs)
@@ -237,7 +227,7 @@ namespace NeoCortexApiSample
                         Debug.WriteLine($"Col  SDR: {Helpers.StringifyVector(lyrOut.ActivColumnIndicies)}");
                         Debug.WriteLine($"Cell SDR: {Helpers.StringifyVector(actCells.Select(c => c.Index).ToArray())}");
 
-                        //
+                    
                         // If the list of predicted values from the previous step contains the currently presenting value,
                         // we have a match.
                         if (lastPredictedValues.Contains(key))
@@ -279,7 +269,7 @@ namespace NeoCortexApiSample
                         maxMatchCnt++;
                         Debug.WriteLine($"100% accuracy reched {maxMatchCnt} times.");
 
-                        //
+                       
                         // Experiment is completed if we are 30 cycles long at the 100% accuracy.
                         if (maxMatchCnt >= 30)
                         {
@@ -309,9 +299,8 @@ namespace NeoCortexApiSample
         }
 
       
-        /// <summary>
         /// Gets the number of all unique inputs.
-        /// </summary>
+   
         /// <param name="sequences">Alle sequences.</param>
         /// <returns></returns>
         private int GetNumberOfInputs(Dictionary<string, List<double>> sequences)
