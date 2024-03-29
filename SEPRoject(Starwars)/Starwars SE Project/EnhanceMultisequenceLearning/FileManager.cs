@@ -97,5 +97,55 @@ namespace EnhanceMultisequenceLearning
                 return new List<T>();
             }
         }
+
+        /// <summary>
+        /// Writes reports to a file.
+        /// </summary>
+        /// <param name="reports">The reports to be written.</param>
+        /// <param name="basePath">The base path where the reports will be saved.</param>
+        public static void WriteReport(List<Report> reports, string basePath)
+        {
+            string reportFolder = EnsureDirectory(Path.Combine(basePath, ReportFolder));
+            string reportPath = Path.Combine(reportFolder, $"report_{DateTime.Now.Ticks}.txt");
+
+            using (StreamWriter sw = File.CreateText(reportPath))
+            {
+                foreach (Report report in reports)
+                {
+                    WriteReportContent(sw, report);
+                }
+            }
+        }
+
+
+        /// <summary>
+        /// Ensures that a directory exists; if not, creates it.
+        /// </summary>
+        /// <param name="path">The directory path.</param>
+        /// <returns>The provided directory path.</returns>
+        private static string EnsureDirectory(string path)
+        {
+            if (!Directory.Exists(path))
+                Directory.CreateDirectory(path);
+            return path;
+        }
+        /// <summary>
+        /// Writes the content of a report to a StreamWriter.
+        /// </summary>
+        /// <param name="sw">The StreamWriter to write to.</param>
+        /// <param name="report">The report to write.</param>
+        private static void WriteReportContent(StreamWriter sw, Report report)
+        {
+            sw.WriteLine("------------------------------");
+            sw.WriteLine($"Using test sequence: {report.SequenceName} -> {string.Join("-", report.SequenceData)}");
+            foreach (string log in report.PredictionLog)
+            {
+                sw.WriteLine($"\t{log}");
+            }
+            sw.WriteLine($"\tAccuracy: {report.Accuracy}%");
+            sw.WriteLine("------------------------------");
+        }
+
+
     }
 }
