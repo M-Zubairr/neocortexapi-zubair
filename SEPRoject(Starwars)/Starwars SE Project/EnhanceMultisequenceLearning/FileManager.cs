@@ -145,7 +145,6 @@ namespace EnhanceMultisequenceLearning
             sw.WriteLine($"\tAccuracy: {report.Accuracy}%");
             sw.WriteLine("------------------------------");
         }
-
         /// <summary>
         /// Saves a number dataset to files.
         /// </summary>

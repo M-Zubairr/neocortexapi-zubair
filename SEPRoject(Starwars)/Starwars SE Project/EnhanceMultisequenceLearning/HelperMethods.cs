@@ -177,52 +177,7 @@ namespace EnhanceMultisequenceLearning
             };
         }
 
-        /// <summary>
-        /// Creates multiple sequences as per parameters
-        /// </summary>
-        public static List<Sequence> CreateSequences(int count, int size, int startVal, int stopVal)
-        {
-            return Enumerable.Range(1, count).Select(i =>
-                new Sequence
-                {
-                    name = $"S{i}",
-                    data = GenerateRandomSequence(size, startVal, stopVal)
-                })
-                .ToList();
-        }
-
-        private static int[] GenerateRandomSequence(int size, int startVal, int stopVal)
-        {
-            var rnd = new Random();
-            var sequence = new HashSet<int>();
-
-            while (sequence.Count < size)
-            {
-                int number = rnd.Next(startVal, stopVal + 1);
-                sequence.Add(number);
-            }
-
-            return sequence.OrderBy(n => n).ToArray();
-        }
-
-        /// <summary>
-        /// Reads dataset from the file
-        /// </summary>
-        public static List<Sequence> ReadDataset(string path)
-        {
-            Console.WriteLine("Reading Sequence...");
-            try
-            {
-                string fileContent = File.ReadAllText(path);
-                return JsonConvert.DeserializeObject<List<Sequence>>(fileContent);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Failed to read the dataset: {ex.Message}");
-                return new List<Sequence>(); // Return an empty list in case of failure
-            }
-        }
-
+   
 
     }
 }
