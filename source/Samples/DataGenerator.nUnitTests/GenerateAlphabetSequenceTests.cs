@@ -21,7 +21,7 @@ namespace DataGenerator.nUnitTests
             // Arrange
             int length = 0;
 
-            // Act & Assert//
+            // Act & Assert///
             Assert.Throws<ArgumentException>(() => EnhanceMultisequenceLearning.DataGenerator.GenerateAlphabetSequence(length));
         }
 

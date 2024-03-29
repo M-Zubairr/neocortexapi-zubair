@@ -37,7 +37,7 @@
             int minLength = 3;
             int maxLength = 6;
 
-            // Act & Assert
+            // Act & Assert//
             Assert.Throws<ArgumentException>(() => EnhanceMultisequenceLearning.DataGenerator.GenerateMultiSequenceDatasetForAlphabets(numSequences, minLength, maxLength));
         }
 
