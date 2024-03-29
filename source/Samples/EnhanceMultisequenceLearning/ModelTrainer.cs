@@ -47,5 +47,29 @@ namespace EnhanceMultisequenceLearning
 
             return reports;
         }
+
+        private static string PredictElement(Predictor predictor, int current, int next, ref int matchCount)
+        {
+            Console.WriteLine($"Input: {current}");
+            var predictions = predictor.Predict(current);
+            if (predictions.Any())
+            {
+                var highestPrediction = predictions.OrderByDescending(p => p.Similarity).First();
+                string predictedSequence = highestPrediction.PredictedInput.Split('-').First();
+                int predictedNext = int.Parse(highestPrediction.PredictedInput.Split('-').Last());
+
+                Console.WriteLine($"Predicted Sequence: {predictedSequence} - Predicted next element: {predictedNext}");
+                if (predictedNext == next)
+                    matchCount++;
+
+                return $"Input: {current}, Predicted Sequence: {predictedSequence}, Predicted next element: {predictedNext}";
+            }
+            else
+            {
+                Console.WriteLine("Nothing predicted");
+                return $"Input: {current}, Nothing predicted";
+            }
+        }
+
     }
 }
