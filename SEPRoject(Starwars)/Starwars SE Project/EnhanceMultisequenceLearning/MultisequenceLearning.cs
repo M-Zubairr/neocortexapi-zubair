@@ -246,5 +246,47 @@ namespace EnhanceMultisequenceLearning
 
             return new Predictor(layer1, mem, cls);
         }
+        /// <summary>
+        /// Gets the number of all unique inputs.
+        /// </summary>
+        /// <param name="sequences">Alle sequences.</param>
+        /// <returns></returns>
+        private int GetNumberOfInputs(List<Sequence> sequences)
+        {
+            int num = 0;
+
+            foreach (var inputs in sequences)
+            {
+                //num += inputs.Value.Distinct().Count();
+                num += inputs.data.Length;
+            }
+
+            return num;
+        }
+
+
+        /// <summary>
+        /// Constracts the unique key of the element of an sequece. This key is used as input for HtmClassifier.
+        /// It makes sure that alle elements that belong to the same sequence are prefixed with the sequence.
+        /// The prediction code can then extract the sequence prefix to the predicted element.
+        /// </summary>
+        /// <param name="prevInputs"></param>
+        /// <param name="input"></param>
+        /// <param name="sequence"></param>
+        /// <returns></returns>
+        private static string GetKey(List<string> prevInputs, double input, string sequence)
+        {
+            string key = String.Empty;
+
+            for (int i = 0; i < prevInputs.Count; i++)
+            {
+                if (i > 0)
+                    key += "-";
+
+                key += (prevInputs[i]);
+            }
+            //Console.WriteLine($"GetKey={sequence}_{key}");
+            return $"{sequence}_{key}";
+        }
     }
 }
