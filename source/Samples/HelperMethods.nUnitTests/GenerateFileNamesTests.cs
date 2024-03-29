@@ -11,7 +11,7 @@ namespace HelperMethods.nUnitTests
         [Test]
         public void GenerateFileNames_ValidInput_ReturnsCorrectNumberOfFiles()
         {
-            // Arrange
+            // Arrange//
             int numOfFiles = 3;
 
             // Act
@@ -22,11 +22,12 @@ namespace HelperMethods.nUnitTests
         }
 
         [Test]
+
         public void GenerateFileNames_ValidInput_ReturnsCorrectFileNamesFormat()
         {
-            // Arrange
-            int numOfFiles = 3;
-            string[][] expected = {
+                // Arrange
+                int numOfFiles = 3;
+                string[][] expected = {
             new string[] { "dataset_01", "eval_01", "test_01" },
             new string[] { "dataset_02", "eval_02", "test_02" },
             new string[] { "dataset_03", "eval_03", "test_03" }
