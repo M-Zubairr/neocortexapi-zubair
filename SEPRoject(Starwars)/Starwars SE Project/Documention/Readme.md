@@ -10,8 +10,7 @@ Syed Tabish Talha Hassan
 ## Project Description ##
 
 ### Objective: ###
-The objective of this task is to analyze the previously impletemented sequence learing algoithm and further improve the efficiency of the current implementation (for e.g, accuracy).
-The previous implementation was about learning the sequence of numbers, alphabets and images.In case of numbers and alphabets, we provided a set of alphabets/numbers and it predicts the upcoming number or alphabet in the sequence whereas for image input, it tries to predict the object pedict in the image.
+The objective of this task is to analyze the previously impletemented sequence learing algorithm and further improve the efficiency of the current implementation. (for e.g, accuracy).
 
 ## Flow Diagram ##
 
@@ -103,6 +102,10 @@ Alphabetic sequence:
 {"name": "S4", "data": "BDEFHJLMNQTVZ"}
 ,
 {"name": "S5", "data": "DEIJMQRSUW"}
+.
+.
+.
+{"name": "S50", "data": "ACEIKMOPRUW"}
 ```
 
 Number sequence:
@@ -116,6 +119,10 @@ Number sequence:
 {"name": "S4", "data": [3,5,7,15,16,17,20,30,33,35,41,44,47]}
 ,
 {"name": "S5", "data": [10,16,19,27,29,33,34,35,36,37,39]}
+.
+.
+.
+{"name": "S50", "data": [10,12,13,15,17,19,30,32,34,38,40]}
 ```
 ### Encoder Config
 Encoder parameters for alphabetic sequence:
