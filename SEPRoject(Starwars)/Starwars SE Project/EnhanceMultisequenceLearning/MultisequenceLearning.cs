@@ -1,20 +1,40 @@
-﻿using EnhanceMultisequenceLearning.Data;
+﻿using NeoCortexApi;
 using NeoCortexApi.Classifiers;
 using NeoCortexApi.Encoders;
 using NeoCortexApi.Entities;
 using NeoCortexApi.Network;
-using NeoCortexApi;
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using EnhanceMultisequenceLearning.Data;
 
 namespace EnhanceMultisequenceLearning
 {
-    public class MultisequenceLearning
+    /// <summary>
+    /// Implements an experiment that demonstrates how to learn sequences.
+    /// </summary>
+    public class MultiSequenceLearning
     {
+        /// <summary>
+        /// Runs the learning of sequences.
+        /// </summary>
+        /// <param name="sequences">Dictionary of sequences. KEY is the sewuence name, the VALUE is th elist of element of the sequence.</param>
+        public Predictor Run(List<Sequence> sequences, bool isNumberDataset, int index)
+        {
+            Console.WriteLine($"Hello NeocortexApi! Experiment {nameof(MultiSequenceLearning)} - Thread {index}");
+
+            int inputBits = 200;
+            int numColumns = 1024;
+
+            HtmConfig cfg = HelperMethods.FetchHTMConfig(inputBits, numColumns);
+
+            EncoderBase encoder;
+            if (isNumberDataset)
+                encoder = HelperMethods.GetEncoderForNumberSequence(inputBits);
+            else
+                encoder = HelperMethods.GetEncoderForAlphabetSequence(inputBits);
+
+            return RunExperiment(inputBits, cfg, encoder, sequences, index);
+        }
+
         /// <summary>
         ///
         /// </summary>
@@ -246,6 +266,7 @@ namespace EnhanceMultisequenceLearning
 
             return new Predictor(layer1, mem, cls);
         }
+
         /// <summary>
         /// Gets the number of all unique inputs.
         /// </summary>

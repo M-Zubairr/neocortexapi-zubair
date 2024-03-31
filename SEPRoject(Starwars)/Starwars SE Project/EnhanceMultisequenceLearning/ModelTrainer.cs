@@ -1,9 +1,5 @@
 ﻿using EnhanceMultisequenceLearning.Data;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using NeoCortexApi;
 
 namespace EnhanceMultisequenceLearning
 {
@@ -68,29 +64,28 @@ namespace EnhanceMultisequenceLearning
             return CalculateAccuracy(matchCount, predictions);
         }
 
-        private static double CalculateAccuracy(int matchCount, int predictions)
+
+        private static string PredictElement(Predictor predictor, int current, int next, ref int matchCount)
         {
-            return (double)matchCount / predictions * 100;
-        }
-
-        private static double PredictNextElement(Predictor predictor, int[] list, Report report)
-        {
-            int matchCount = 0, predictions = 0;
-            List<string> logs = new List<string>();
-
-            predictor.Reset();
-
-            for (int i = 0; i < list.Length - 1; i++)
+            Console.WriteLine($"Input: {current}");
+            var predictions = predictor.Predict(current);
+            if (predictions.Any())
             {
-                int current = list[i];
-                int next = list[i + 1];
+                var highestPrediction = predictions.OrderByDescending(p => p.Similarity).First();
+                string predictedSequence = highestPrediction.PredictedInput.Split('-').First();
+                int predictedNext = int.Parse(highestPrediction.PredictedInput.Split('-').Last());
 
-                logs.Add(PredictElement(predictor, current, next, ref matchCount));
-                predictions++;
+                Console.WriteLine($"Predicted Sequence: {predictedSequence} - Predicted next element: {predictedNext}");
+                if (predictedNext == next)
+                    matchCount++;
+
+                return $"Input: {current}, Predicted Sequence: {predictedSequence}, Predicted next element: {predictedNext}";
             }
-
-            report.PredictionLog = logs;
-            return CalculateAccuracy(matchCount, predictions);
+            else
+            {
+                Console.WriteLine("Nothing predicted");
+                return $"Input: {current}, Nothing predicted";
+            }
         }
 
         private static double CalculateAccuracy(int matchCount, int predictions)

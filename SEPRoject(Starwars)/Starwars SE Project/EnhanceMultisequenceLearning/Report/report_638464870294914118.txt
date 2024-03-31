@@ -1,0 +1,370 @@
+------------------------------
+Using test sequence: T1 -> 101-102-103-104-108-109
+	Input: 101, Predicted Sequence: S39_105, Predicted next element: 102
+	Input: 102, Predicted Sequence: S40_108, Predicted next element: 107
+	Input: 103, Predicted Sequence: S36_106, Predicted next element: 105
+	Input: 104, Predicted Sequence: S34_106, Predicted next element: 105
+	Input: 108, Predicted Sequence: S37_113, Predicted next element: 110
+	Accuracy: 20%
+------------------------------
+------------------------------
+Using test sequence: T2 -> 98-101-103-107-108
+	Input: 98, Predicted Sequence: S40_101, Predicted next element: 99
+	Input: 101, Predicted Sequence: S39_105, Predicted next element: 102
+	Input: 103, Predicted Sequence: S36_106, Predicted next element: 105
+	Input: 107, Predicted Sequence: S40_110, Predicted next element: 108
+	Accuracy: 25%
+------------------------------
+------------------------------
+Using test sequence: T3 -> 100-102-106-114-115-116-117-119
+	Input: 100, Predicted Sequence: S31_105, Predicted next element: 102
+	Input: 102, Nothing predicted
+	Input: 106, Predicted Sequence: S38_112, Predicted next element: 109
+	Input: 114, Predicted Sequence: S40_117, Predicted next element: 116
+	Input: 115, Predicted Sequence: S39_118, Predicted next element: 117
+	Input: 116, Predicted Sequence: S40_, Predicted next element: 117
+	Input: 117, Predicted Sequence: S40_120, Predicted next element: 118
+	Accuracy: 28.57142857142857%
+------------------------------
+------------------------------
+Using test sequence: T4 -> 98-101-104-105-106-108-109
+	Input: 98, Predicted Sequence: S40_101, Predicted next element: 99
+	Input: 101, Predicted Sequence: S39_105, Predicted next element: 102
+	Input: 104, Predicted Sequence: S34_106, Predicted next element: 105
+	Input: 105, Predicted Sequence: S34_109, Predicted next element: 106
+	Input: 106, Nothing predicted
+	Input: 108, Predicted Sequence: S36_111, Predicted next element: 110
+	Accuracy: 33.33333333333333%
+------------------------------
+------------------------------
+Using test sequence: T5 -> 100-104-106-109-114
+	Input: 100, Predicted Sequence: S31_105, Predicted next element: 102
+	Input: 104, Predicted Sequence: S35_106, Predicted next element: 105
+	Input: 106, Predicted Sequence: S38_112, Predicted next element: 109
+	Input: 109, Nothing predicted
+	Accuracy: 25%
+------------------------------
+------------------------------
+Using test sequence: T6 -> 104-105-106-107-111
+	Input: 104, Predicted Sequence: S34_106, Predicted next element: 105
+	Input: 105, Predicted Sequence: S34_109, Predicted next element: 106
+	Input: 106, Nothing predicted
+	Input: 107, Predicted Sequence: S40_110, Predicted next element: 108
+	Accuracy: 50%
+------------------------------
+------------------------------
+Using test sequence: T7 -> 113-114-116-117-118
+	Input: 113, Predicted Sequence: S40_116, Predicted next element: 114
+	Input: 114, Predicted Sequence: S40_117, Predicted next element: 116
+	Input: 116, Predicted Sequence: S40_118, Predicted next element: 117
+	Input: 117, Predicted Sequence: S40_120, Predicted next element: 118
+	Accuracy: 100%
+------------------------------
+------------------------------
+Using test sequence: T8 -> 100-103-104-108-110-111-112-113-115-116-117
+	Input: 100, Predicted Sequence: S31_105, Predicted next element: 102
+	Input: 103, Predicted Sequence: S36_106, Predicted next element: 105
+	Input: 104, Predicted Sequence: S34_106, Predicted next element: 105
+	Input: 108, Predicted Sequence: S37_113, Predicted next element: 110
+	Input: 110, Predicted Sequence: S37_119, Predicted next element: 113
+	Input: 111, Predicted Sequence: S33_, Predicted next element: 112
+	Input: 112, Nothing predicted
+	Input: 113, Predicted Sequence: S40_116, Predicted next element: 114
+	Input: 115, Predicted Sequence: S39_118, Predicted next element: 117
+	Input: 116, Predicted Sequence: S40_, Predicted next element: 117
+	Accuracy: 30%
+------------------------------
+------------------------------
+Using test sequence: T9 -> 106-107-110-111-114-115-116-118-120
+	Input: 106, Predicted Sequence: S38_112, Predicted next element: 109
+	Input: 107, Predicted Sequence: S40_110, Predicted next element: 108
+	Input: 110, Predicted Sequence: S40_113, Predicted next element: 112
+	Input: 111, Predicted Sequence: S33_, Predicted next element: 112
+	Input: 114, Predicted Sequence: S40_117, Predicted next element: 116
+	Input: 115, Predicted Sequence: S39_118, Predicted next element: 117
+	Input: 116, Predicted Sequence: S40_, Predicted next element: 117
+	Input: 118, Predicted Sequence: S39_122, Predicted next element: 120
+	Accuracy: 12.5%
+------------------------------
+------------------------------
+Using test sequence: T10 -> 106-107-108-109-110-112-113-114-116-117
+	Input: 106, Predicted Sequence: S38_112, Predicted next element: 109
+	Input: 107, Predicted Sequence: S40_110, Predicted next element: 108
+	Input: 108, Predicted Sequence: S40_112, Predicted next element: 110
+	Input: 109, Predicted Sequence: S39_117, Predicted next element: 115
+	Input: 110, Predicted Sequence: S40_113, Predicted next element: 112
+	Input: 112, Predicted Sequence: S40_114, Predicted next element: 113
+	Input: 113, Predicted Sequence: S40_116, Predicted next element: 114
+	Input: 114, Predicted Sequence: S40_117, Predicted next element: 116
+	Input: 116, Predicted Sequence: S40_118, Predicted next element: 117
+	Accuracy: 66.66666666666666%
+------------------------------
+------------------------------
+Using test sequence: T11 -> 99-100-101-105-111
+	Input: 99, Predicted Sequence: S37_102, Predicted next element: 100
+	Input: 100, Predicted Sequence: S37_104, Predicted next element: 102
+	Input: 101, Predicted Sequence: S39_105, Predicted next element: 102
+	Input: 105, Predicted Sequence: S15_107, Predicted next element: 106
+	Accuracy: 25%
+------------------------------
+------------------------------
+Using test sequence: T12 -> 101-102-105-106-107-108-109-112-115
+	Input: 101, Predicted Sequence: S39_105, Predicted next element: 102
+	Input: 102, Predicted Sequence: S40_108, Predicted next element: 107
+	Input: 105, Predicted Sequence: S15_107, Predicted next element: 106
+	Input: 106, Nothing predicted
+	Input: 107, Predicted Sequence: S40_110, Predicted next element: 108
+	Input: 108, Predicted Sequence: S40_112, Predicted next element: 110
+	Input: 109, Predicted Sequence: S39_117, Predicted next element: 115
+	Input: 112, Predicted Sequence: S40_114, Predicted next element: 113
+	Accuracy: 37.5%
+------------------------------
+------------------------------
+Using test sequence: T13 -> 99-101-102-104-107
+	Input: 99, Predicted Sequence: S37_102, Predicted next element: 100
+	Input: 101, Predicted Sequence: S40_107, Predicted next element: 102
+	Input: 102, Predicted Sequence: S40_108, Predicted next element: 107
+	Input: 104, Predicted Sequence: S34_106, Predicted next element: 105
+	Accuracy: 25%
+------------------------------
+------------------------------
+Using test sequence: T14 -> 101-102-103-104-107-108-110
+	Input: 101, Predicted Sequence: S39_105, Predicted next element: 102
+	Input: 102, Predicted Sequence: S40_108, Predicted next element: 107
+	Input: 103, Predicted Sequence: S36_106, Predicted next element: 105
+	Input: 104, Predicted Sequence: S34_106, Predicted next element: 105
+	Input: 107, Predicted Sequence: S40_110, Predicted next element: 108
+	Input: 108, Predicted Sequence: S40_112, Predicted next element: 110
+	Accuracy: 50%
+------------------------------
+
+------------------------------
+Using test sequence: T15 -> 98-100-104-105-109-110-113-114-116-119-120
+	Input: 98, Predicted Sequence: S40_101, Predicted next element: 99
+	Input: 100, Predicted Sequence: S31_105, Predicted next element: 102
+	Input: 104, Predicted Sequence: S35_106, Predicted next element: 105
+	Input: 105, Predicted Sequence: S35_107, Predicted next element: 106
+	Input: 109, Predicted Sequence: S39_117, Predicted next element: 115
+	Input: 110, Predicted Sequence: S40_113, Predicted next element: 112
+	Input: 113, Predicted Sequence: S40_116, Predicted next element: 114
+	Input: 114, Predicted Sequence: S40_117, Predicted next element: 116
+	Input: 116, Predicted Sequence: S40_118, Predicted next element: 117
+	Input: 119, Predicted Sequence: S38_, Predicted next element: 120
+	Accuracy: 40%
+------------------------------
+------------------------------
+Using test sequence: T16 -> 97-98-102-105-106-109-110-112-114-115-116-118-119
+	Input: 97, Predicted Sequence: S36_101, Predicted next element: 99
+	Input: 98, Predicted Sequence: S40_101, Predicted next element: 99
+	Input: 102, Predicted Sequence: S40_108, Predicted next element: 107
+	Input: 105, Predicted Sequence: S15_107, Predicted next element: 106
+	Input: 106, Nothing predicted
+	Input: 109, Predicted Sequence: S39_117, Predicted next element: 115
+	Input: 110, Predicted Sequence: S40_113, Predicted next element: 112
+	Input: 112, Predicted Sequence: S40_114, Predicted next element: 113
+	Input: 114, Predicted Sequence: S40_117, Predicted next element: 116
+	Input: 115, Predicted Sequence: S39_118, Predicted next element: 117
+	Input: 116, Predicted Sequence: S40_, Predicted next element: 117
+	Input: 118, Predicted Sequence: S39_122, Predicted next element: 120
+	Accuracy: 16.666666666666664%
+------------------------------
+------------------------------
+Using test sequence: T17 -> 102-106-107-109-111-114-116
+	Input: 102, Predicted Sequence: S40_108, Predicted next element: 107
+	Input: 106, Predicted Sequence: S38_112, Predicted next element: 109
+	Input: 107, Predicted Sequence: S40_110, Predicted next element: 108
+	Input: 109, Predicted Sequence: S39_117, Predicted next element: 115
+	Input: 111, Predicted Sequence: S33_, Predicted next element: 112
+	Input: 114, Predicted Sequence: S40_117, Predicted next element: 116
+	Accuracy: 16.666666666666664%
+------------------------------
+------------------------------
+Using test sequence: T18 -> 97-100-101-102-105-106-108-111-113-114
+	Input: 97, Predicted Sequence: S36_101, Predicted next element: 99
+	Input: 100, Predicted Sequence: S31_105, Predicted next element: 102
+	Input: 101, Predicted Sequence: S39_105, Predicted next element: 102
+	Input: 102, Predicted Sequence: S40_108, Predicted next element: 107
+	Input: 105, Predicted Sequence: S15_107, Predicted next element: 106
+	Input: 106, Nothing predicted
+	Input: 108, Predicted Sequence: S36_111, Predicted next element: 110
+	Input: 111, Predicted Sequence: S33_, Predicted next element: 112
+	Input: 113, Predicted Sequence: S40_116, Predicted next element: 114
+	Accuracy: 33.33333333333333%
+------------------------------
+------------------------------
+Using test sequence: T19 -> 97-98-101-102-104-107-110-113
+	Input: 97, Predicted Sequence: S36_101, Predicted next element: 99
+	Input: 98, Predicted Sequence: S40_101, Predicted next element: 99
+	Input: 101, Predicted Sequence: S39_105, Predicted next element: 102
+	Input: 102, Predicted Sequence: S40_108, Predicted next element: 107
+	Input: 104, Predicted Sequence: S34_106, Predicted next element: 105
+	Input: 107, Predicted Sequence: S40_110, Predicted next element: 108
+	Input: 110, Predicted Sequence: S40_113, Predicted next element: 112
+	Accuracy: 14.285714285714285%
+------------------------------
+------------------------------
+Using test sequence: T20 -> 109-113-114-119-120
+	Input: 109, Predicted Sequence: S39_117, Predicted next element: 115
+	Input: 113, Predicted Sequence: S40_116, Predicted next element: 114
+	Input: 114, Predicted Sequence: S40_117, Predicted next element: 116
+	Input: 119, Predicted Sequence: S38_, Predicted next element: 120
+	Accuracy: 50%
+------------------------------
+
+------------------------------
+Using test sequence: T21 -> 97-103-104-105-106
+	Input: 97, Predicted Sequence: S36_101, Predicted next element: 99
+	Input: 103, Predicted Sequence: S36_106, Predicted next element: 105
+	Input: 104, Predicted Sequence: S34_106, Predicted next element: 105
+	Input: 105, Predicted Sequence: S34_109, Predicted next element: 106
+	Accuracy: 50%
+------------------------------
+------------------------------
+Using test sequence: T22 -> 107-114-117-118-119
+	Input: 107, Predicted Sequence: S40_110, Predicted next element: 108
+	Input: 114, Predicted Sequence: S40_117, Predicted next element: 116
+	Input: 117, Predicted Sequence: S39_120, Predicted next element: 118
+	Input: 118, Predicted Sequence: S39_122, Predicted next element: 120
+	Accuracy: 25%
+------------------------------
+------------------------------
+Using test sequence: T23 -> 106-107-108-109-113
+	Input: 106, Predicted Sequence: S38_112, Predicted next element: 109
+	Input: 107, Predicted Sequence: S40_110, Predicted next element: 108
+	Input: 108, Predicted Sequence: S40_112, Predicted next element: 110
+	Input: 109, Predicted Sequence: S39_117, Predicted next element: 115
+	Accuracy: 25%
+------------------------------
+------------------------------
+Using test sequence: T24 -> 103-106-108-110-112
+	Input: 103, Predicted Sequence: S36_106, Predicted next element: 105
+	Input: 106, Predicted Sequence: S38_112, Predicted next element: 109
+	Input: 108, Predicted Sequence: S36_111, Predicted next element: 110
+	Input: 110, Predicted Sequence: S40_113, Predicted next element: 112
+	Accuracy: 50%
+------------------------------
+------------------------------
+Using test sequence: T25 -> 99-101-104-106-109-110-112-116-117
+	Input: 99, Predicted Sequence: S37_102, Predicted next element: 100
+	Input: 101, Predicted Sequence: S40_107, Predicted next element: 102
+	Input: 104, Predicted Sequence: S34_106, Predicted next element: 105
+	Input: 106, Predicted Sequence: S38_112, Predicted next element: 109
+	Input: 109, Nothing predicted
+	Input: 110, Predicted Sequence: S40_113, Predicted next element: 112
+	Input: 112, Predicted Sequence: S40_114, Predicted next element: 113
+	Input: 116, Predicted Sequence: S40_, Predicted next element: 117
+	Accuracy: 37.5%
+------------------------------
+------------------------------
+Using test sequence: T26 -> 98-99-100-102-105-106-108-109-115
+	Input: 98, Predicted Sequence: S40_101, Predicted next element: 99
+	Input: 99, Predicted Sequence: S40_102, Predicted next element: 101
+	Input: 100, Predicted Sequence: S31_105, Predicted next element: 102
+	Input: 102, Nothing predicted
+	Input: 105, Predicted Sequence: S15_107, Predicted next element: 106
+	Input: 106, Nothing predicted
+	Input: 108, Predicted Sequence: S36_111, Predicted next element: 110
+	Input: 109, Predicted Sequence: S39_117, Predicted next element: 115
+	Accuracy: 50%
+------------------------------
+------------------------------
+Using test sequence: T27 -> 105-106-108-112-114-115-117
+	Input: 105, Predicted Sequence: S15_107, Predicted next element: 106
+	Input: 106, Nothing predicted
+	Input: 108, Predicted Sequence: S36_111, Predicted next element: 110
+	Input: 112, Predicted Sequence: S40_114, Predicted next element: 113
+	Input: 114, Predicted Sequence: S40_117, Predicted next element: 116
+	Input: 115, Predicted Sequence: S39_118, Predicted next element: 117
+	Accuracy: 33.33333333333333%
+------------------------------
+------------------------------
+Using test sequence: T28 -> 102-108-109-110-112-114
+	Input: 102, Predicted Sequence: S40_108, Predicted next element: 107
+	Input: 108, Predicted Sequence: S36_111, Predicted next element: 110
+	Input: 109, Predicted Sequence: S39_117, Predicted next element: 115
+	Input: 110, Predicted Sequence: S40_113, Predicted next element: 112
+	Input: 112, Predicted Sequence: S40_114, Predicted next element: 113
+	Accuracy: 20%
+------------------------------
+------------------------------
+Using test sequence: T29 -> 103-104-105-106-109-110-111-113-114-115-116-117-118
+	Input: 103, Predicted Sequence: S36_106, Predicted next element: 105
+	Input: 104, Predicted Sequence: S34_106, Predicted next element: 105
+	Input: 105, Predicted Sequence: S34_109, Predicted next element: 106
+	Input: 106, Nothing predicted
+	Input: 109, Predicted Sequence: S39_117, Predicted next element: 115
+	Input: 110, Predicted Sequence: S40_113, Predicted next element: 112
+	Input: 111, Predicted Sequence: S33_, Predicted next element: 112
+	Input: 113, Predicted Sequence: S40_116, Predicted next element: 114
+	Input: 114, Predicted Sequence: S40_117, Predicted next element: 116
+	Input: 115, Predicted Sequence: S39_118, Predicted next element: 117
+	Input: 116, Predicted Sequence: S40_, Predicted next element: 117
+	Input: 117, Predicted Sequence: S40_120, Predicted next element: 118
+	Accuracy: 41.66666666666667%
+------------------------------
+------------------------------
+Using test sequence: T30 -> 98-100-104-105-106-107-110-113-115-116
+	Input: 98, Predicted Sequence: S40_101, Predicted next element: 99
+	Input: 100, Predicted Sequence: S31_105, Predicted next element: 102
+	Input: 104, Predicted Sequence: S35_106, Predicted next element: 105
+	Input: 105, Predicted Sequence: S35_107, Predicted next element: 106
+	Input: 106, Nothing predicted
+	Input: 107, Predicted Sequence: S40_110, Predicted next element: 108
+	Input: 110, Predicted Sequence: S40_113, Predicted next element: 112
+	Input: 113, Predicted Sequence: S40_116, Predicted next element: 114
+	Input: 115, Predicted Sequence: S39_118, Predicted next element: 117
+	Accuracy: 22.22222222222222%
+------------------------------
+------------------------------
+Using test sequence: T31 -> 97-99-101-103-105-106-108-110-111-112-115-118
+	Input: 97, Predicted Sequence: S36_101, Predicted next element: 99
+	Input: 99, Predicted Sequence: S37_102, Predicted next element: 100
+	Input: 101, Predicted Sequence: S39_105, Predicted next element: 102
+	Input: 103, Predicted Sequence: S36_106, Predicted next element: 105
+	Input: 105, Predicted Sequence: S36_108, Predicted next element: 106
+	Input: 106, Nothing predicted
+	Input: 108, Predicted Sequence: S36_111, Predicted next element: 110
+	Input: 110, Predicted Sequence: S40_113, Predicted next element: 112
+	Input: 111, Predicted Sequence: S33_, Predicted next element: 112
+	Input: 112, Nothing predicted
+	Input: 115, Predicted Sequence: S39_118, Predicted next element: 117
+	Accuracy: 45.45454545454545%
+------------------------------
+------------------------------
+Using test sequence: T32 -> 99-100-102-104-108-110-113
+	Input: 99, Predicted Sequence: S37_102, Predicted next element: 100
+	Input: 100, Predicted Sequence: S37_104, Predicted next element: 102
+	Input: 102, Nothing predicted
+	Input: 104, Predicted Sequence: S34_106, Predicted next element: 105
+	Input: 108, Predicted Sequence: S37_113, Predicted next element: 110
+	Input: 110, Predicted Sequence: S37_119, Predicted next element: 113
+	Accuracy: 66.66666666666666%
+------------------------------
+------------------------------
+Using test sequence: T33 -> 109-112-116-117-119-120
+	Input: 109, Predicted Sequence: S39_117, Predicted next element: 115
+	Input: 112, Predicted Sequence: S40_114, Predicted next element: 113
+	Input: 116, Predicted Sequence: S40_, Predicted next element: 117
+	Input: 117, Predicted Sequence: S40_120, Predicted next element: 118
+	Input: 119, Predicted Sequence: S38_, Predicted next element: 120
+	Accuracy: 40%
+------------------------------
+------------------------------
+Using test sequence: T34 -> 102-105-107-109-115
+	Input: 102, Predicted Sequence: S40_108, Predicted next element: 107
+	Input: 105, Predicted Sequence: S15_107, Predicted next element: 106
+	Input: 107, Nothing predicted
+	Input: 109, Predicted Sequence: S39_117, Predicted next element: 115
+	Accuracy: 25%
+------------------------------
+------------------------------
+Using test sequence: T35 -> 108-110-112-113-114-116-117-118
+	Input: 108, Predicted Sequence: S36_111, Predicted next element: 110
+	Input: 110, Predicted Sequence: S40_113, Predicted next element: 112
+	Input: 112, Predicted Sequence: S40_114, Predicted next element: 113
+	Input: 113, Predicted Sequence: S40_116, Predicted next element: 114
+	Input: 114, Predicted Sequence: S40_117, Predicted next element: 116
+	Input: 116, Predicted Sequence: S40_118, Predicted next element: 117
+	Input: 117, Predicted Sequence: S40_120, Predicted next element: 118
+	Accuracy: 100%
+------------------------------
