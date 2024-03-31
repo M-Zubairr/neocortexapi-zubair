@@ -1,12 +1,23 @@
-﻿using NeoCortexApi;
+﻿using System;
+using System.Globalization;
+using System.IO;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using NeoCortexApi;
 using NeoCortexApi.Classifiers;
 using NeoCortexApi.Encoders;
 using NeoCortexApi.Entities;
+using NeoCortexApi.Classifiers;
 using NeoCortexApi.Network;
+using System;
+using System.Collections.Generic;
 using System.Diagnostics;
-using EnhanceMultisequenceLearning.Data;
+using System.Linq;
 
-namespace EnhanceMultisequenceLearning
+
+namespace MultiSequenceLearning
 {
     /// <summary>
     /// Implements an experiment that demonstrates how to learn sequences.
@@ -17,28 +28,24 @@ namespace EnhanceMultisequenceLearning
         /// Runs the learning of sequences.
         /// </summary>
         /// <param name="sequences">Dictionary of sequences. KEY is the sewuence name, the VALUE is th elist of element of the sequence.</param>
-        public Predictor Run(List<Sequence> sequences, bool isNumberDataset, int index)
+        public Predictor Run(List<Sequence> sequences)
         {
-            Console.WriteLine($"Hello NeocortexApi! Experiment {nameof(MultiSequenceLearning)} - Thread {index}");
+            Console.WriteLine($"Hello NeocortexApi! Experiment {nameof(MultiSequenceLearning)}");
 
-            int inputBits = 200;
-            int numColumns = 1024;
+            int inputBits = 100;
+            int numColumns = 2048;
 
             HtmConfig cfg = HelperMethods.FetchHTMConfig(inputBits, numColumns);
 
-            EncoderBase encoder;
-            if (isNumberDataset)
-                encoder = HelperMethods.GetEncoderForNumberSequence(inputBits);
-            else
-                encoder = HelperMethods.GetEncoderForAlphabetSequence(inputBits);
+            EncoderBase encoder = HelperMethods.GetEncoder(inputBits);
 
-            return RunExperiment(inputBits, cfg, encoder, sequences, index);
+            return RunExperiment(inputBits, cfg, encoder, sequences);
         }
 
         /// <summary>
         ///
         /// </summary>
-        private Predictor RunExperiment(int inputBits, HtmConfig cfg, EncoderBase encoder, List<Sequence> sequences, int index)
+        private Predictor RunExperiment(int inputBits, HtmConfig cfg, EncoderBase encoder, List<Sequence> sequences)
         {
             Stopwatch sw = new Stopwatch();
             sw.Start();
@@ -57,9 +64,9 @@ namespace EnhanceMultisequenceLearning
 
             TemporalMemory tm = new TemporalMemory();
 
-            Console.WriteLine($"------------ START ------------ Thread {index}");
+            Console.WriteLine("------------ START ------------");
 
-            // For more information see following paper: https://www.scitepress.org/Papers/2021/103142/103142.pdf
+            // For more information see following paper: 
             HomeostaticPlasticityController hpc = new HomeostaticPlasticityController(mem, numUniqueInputs * 150, (isStable, numPatterns, actColAvg, seenInputs) =>
             {
                 if (isStable)
@@ -86,6 +93,7 @@ namespace EnhanceMultisequenceLearning
             // In this stage we want that SP get boosted and see all elements before we start learning with TM.
             // All would also work fine with TM in layer, but it would work much slower.
             // So, to improve the speed of experiment, we first ommit the TM and then after the newborn-stage we add it to the layer.
+            //Getting the alphabetic sequence 
             layer1.HtmModules.Add("encoder", encoder);
             layer1.HtmModules.Add("sp", sp);
 
@@ -97,20 +105,20 @@ namespace EnhanceMultisequenceLearning
 
             var lastPredictedValues = new List<string>(new string[] { "0" });
 
-            int maxCycles = 3500;
+            int maxCycles = 3000;
 
             //
             // Training SP to get stable. New-born stage.
             //
 
-            for (int i = 0; i < maxCycles && isInStableState == false; i++)
+            for (int i = 1; i < maxCycles && isInStableState == false; i++)
             {
-                matches = 0;
+                matches = 1;
 
                 cycle++;
 
-                Debug.WriteLine($"-------------- Newborn SP Cycle {cycle} --------------- Thread {index}");
-                Console.WriteLine($"-------------- Newborn SP Cycle {cycle} --------------- Thread {index}");
+                Debug.WriteLine($"-------------- Newborn SP Cycle {cycle} ---------------");
+                Console.WriteLine($"-------------- Newborn SP Cycle {cycle} ---------------");
 
                 foreach (var inputs in sequences)
                 {
@@ -139,8 +147,8 @@ namespace EnhanceMultisequenceLearning
             // Loop over all sequences.
             foreach (var sequenceKeyPair in sequences)
             {
-                Debug.WriteLine($"-------------- Sequences {sequenceKeyPair.name} --------------- Thread {index}");
-                Console.WriteLine($"-------------- Sequences {sequenceKeyPair.name} --------------- Thread  {index}");
+                Debug.WriteLine($"-------------- Sequences {sequenceKeyPair.name} ---------------");
+                Console.WriteLine($"-------------- Sequences {sequenceKeyPair.name} ---------------");
 
                 int maxPrevInputs = sequenceKeyPair.data.Length - 1;
 
@@ -158,12 +166,12 @@ namespace EnhanceMultisequenceLearning
 
                     Debug.WriteLine("");
 
-                    Debug.WriteLine($"-------------- Cycle SP+TM{cycle} --------------- Thread {index}");
-                    Console.WriteLine($"-------------- Cycle SP+TM {cycle} --------------- Thread  {index}");
+                    Debug.WriteLine($"-------------- Cycle SP+TM{cycle} ---------------");
+                    Console.WriteLine($"-------------- Cycle SP+TM {cycle} ---------------");
 
                     foreach (var input in sequenceKeyPair.data)
                     {
-                        Debug.WriteLine($"-------------- {input} --------------- Thread {index}");
+                        Debug.WriteLine($"-------------- {input} ---------------");
 
                         var lyrOut = layer1.Compute(input, true) as ComputeCycle;
 
@@ -234,8 +242,8 @@ namespace EnhanceMultisequenceLearning
 
                     double accuracy = (double)matches / (double)sequenceKeyPair.data.Length * 100.0;
 
-                    Debug.WriteLine($"Cycle: {cycle}\tMatches={matches} of {sequenceKeyPair.data.Length}\t {accuracy}% - Thread {index}");
-                    Console.WriteLine($"Cycle: {cycle}\tMatches={matches} of {sequenceKeyPair.data.Length}\t {accuracy} - Thread {index}%");
+                    Debug.WriteLine($"Cycle: {cycle}\tMatches={matches} of {sequenceKeyPair.data.Length}\t {accuracy}%");
+                    Console.WriteLine($"Cycle: {cycle}\tMatches={matches} of {sequenceKeyPair.data.Length}\t {accuracy}%");
 
                     if (accuracy >= maxPossibleAccuraccy)
                     {
@@ -262,10 +270,11 @@ namespace EnhanceMultisequenceLearning
                 }
             }
 
-            Debug.WriteLine($"------------ END ------------ Thread {index}");
+            Debug.WriteLine("------------ END ------------");
 
             return new Predictor(layer1, mem, cls);
         }
+
 
         /// <summary>
         /// Gets the number of all unique inputs.

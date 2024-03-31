@@ -1,14 +1,106 @@
 ﻿using EnhanceMultisequenceLearning.Data;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace EnhanceMultisequenceLearning
 {
     public class HTMApp
     {
+        public void Start()
+        {
+            // Welcome message
+            Console.WriteLine("Welcome to HTM Model Trainer!");
+
+            // Get the type of data to train the model on
+            string dataType = GetDataType();
+
+            // Get the number of datasets to train
+            int numDatasets = GetNumberOfDatasets();
+
+            // Generate file names for the datasets
+            var datasetFiles = GenerateDatasetFiles(numDatasets);
+
+            // Get user choice for creating new datasets or using existing ones
+            int choice = GetDatasetOption();
+
+            // Process user choice
+            if (choice == 1)
+            {
+                // Create new datasets
+                CreateNewDatasets(dataType, datasetFiles);
+            }
+            else if (choice != 2)
+            {
+                // Invalid choice, exiting
+                Console.WriteLine("Invalid choice. Exiting...");
+                return;
+            }
+
+            // Train models based on the datasets
+            TrainModels(numDatasets, datasetFiles, dataType);
+
+            // Wait for user input before exiting
+            Console.ReadLine();
+        }
+
+        // Prompt the user for the type of data to train the model on
+        private string GetDataType()
+        {
+            Console.WriteLine("Do you want to train the model on numbers or alphabets?");
+            Console.WriteLine("1. Numbers");
+            Console.WriteLine("2. Alphabets");
+            int choice;
+            while (true)
+            {
+                Console.Write("Enter your choice (1/2): ");
+                choice = Convert.ToInt32(Console.ReadLine());
+                if (choice == 1 || choice == 2)
+                    break;
+                Console.WriteLine("Incorrect Option Selected! Please try again.");
+            }
+
+            return choice == 1 ? "numbers" : "alphabets";
+        }
+
+        // Prompt the user for the number of datasets to train
+        private int GetNumberOfDatasets()
+        {
+            Console.WriteLine("For how many datasets do you want to train? Maximum can be 5 ");
+            int choice;
+            while (true)
+            {
+                Console.Write("Enter your choice (1-5): ");
+                choice = Convert.ToInt32(Console.ReadLine());
+                if (choice > 0 && choice <= 5)
+                    break;
+                Console.WriteLine("The number of datasets should be between 1-5. Please try again: ");
+            }
+            return choice;
+        }
+
+        // Generate file names for the datasets
+        private string[][] GenerateDatasetFiles(int numDatasets)
+        {
+            return HelperMethods.GenerateFileNames(numDatasets);
+        }
+
+        // Prompt the user for creating new datasets or using existing ones
+        private int GetDatasetOption()
+        {
+            Console.WriteLine("Do you want to create new datasets or start with the existing ones?");
+            Console.WriteLine("1. Create a new dataset");
+            Console.WriteLine("2. Use an existing dataset");
+            int choice;
+            while (true)
+            {
+                Console.Write("Enter your choice (1/2): ");
+                choice = Convert.ToInt32(Console.ReadLine());
+                if (choice == 1 || choice == 2)
+                    break;
+                Console.WriteLine("Incorrect Option Selected! Please try again.");
+            }
+            return choice;
+        }
+
+        // Create new datasets based on user specifications
         private void CreateNewDatasets(string dataType, string[][] datasetFiles)
         {
             Console.Write("Enter total sequences in the dataset: ");
@@ -53,6 +145,18 @@ namespace EnhanceMultisequenceLearning
             }
         }
 
+        // Train models for each dataset
+        private void TrainModels(int numDatasets, string[][] datasetFiles, string dataType)
+        {
+            for (int i = 0; i < numDatasets; i++)
+            {
+                int index = i; // Capture the current value of i for the thread
+                Thread thread = new Thread(() => TrainModel(datasetFiles[index], dataType == "numbers", index));
+                thread.Start();
+            }
+        }
+
+        // Train a model for a specific dataset
         private void TrainModel(string[] datasetFiles, bool isNumberDataset, int index)
         {
             // Initialize reports list
@@ -87,44 +191,5 @@ namespace EnhanceMultisequenceLearning
             // Write reports to file
             FileManager.WriteReport(reports, basePath);
         }
-
-        public void Start()
-        {
-            // Welcome message
-            Console.WriteLine("Welcome to HTM Model Trainer!");
-
-            // Get the type of data to train the model on
-            string dataType = GetDataType();
-
-            // Get the number of datasets to train
-            int numDatasets = GetNumberOfDatasets();
-
-            // Generate file names for the datasets
-            var datasetFiles = GenerateDatasetFiles(numDatasets);
-
-            // Get user choice for creating new datasets or using existing ones
-            int choice = GetDatasetOption();
-
-            // Process user choice
-            if (choice == 1)
-            {
-                // Create new datasets
-                CreateNewDatasets(dataType, datasetFiles);
-            }
-            else if (choice != 2)
-            {
-                // Invalid choice, exiting
-                Console.WriteLine("Invalid choice. Exiting...");
-                return;
-            }
-
-            // Train models based on the datasets
-            TrainModels(numDatasets, datasetFiles, dataType);
-
-            // Wait for user input before exiting
-            Console.ReadLine();
-        }
-
-
     }
 }
