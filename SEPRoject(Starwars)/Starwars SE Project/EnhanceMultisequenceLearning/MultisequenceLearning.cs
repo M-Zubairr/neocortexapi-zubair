@@ -21,7 +21,7 @@ namespace EnhanceMultisequenceLearning
         {
             Console.WriteLine($"Hello NeocortexApi! Experiment {nameof(MultiSequenceLearning)} - Thread {index}");
 
-            int inputBits = 100;
+            int inputBits = 200;
             int numColumns = 1024;
 
             HtmConfig cfg = HelperMethods.FetchHTMConfig(inputBits, numColumns);

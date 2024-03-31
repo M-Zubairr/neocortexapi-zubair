@@ -160,7 +160,7 @@ The two encoder configurations mentioned above differ solely in their maximum an
 
 HTM Configuration Parameters
 ```
-    int inputBits = 100;
+    int inputBits = 200;
 	int numColumns = 1024;
 	
     return new HtmConfig(new int[] { inputBits }, new int[] { numColumns })
