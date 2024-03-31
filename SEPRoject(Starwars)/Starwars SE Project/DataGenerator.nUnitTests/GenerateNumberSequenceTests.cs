@@ -2,8 +2,7 @@
 {
     public class GenerateNumberSequenceTests
     {
-        private Random random = new Random();
-
+        // Test case to verify if the generated number sequence has the correct length.
         [Test]
         public void GenerateNumberSequence_ValidLength_ReturnsCorrectLength()
         {
@@ -17,6 +16,7 @@
             Assert.AreEqual(length, result.Length);
         }
 
+        // Test case to verify if an ArgumentException is thrown when the length is zero.
         [Test]
         public void GenerateNumberSequence_LengthZero_ThrowsArgumentException()
         {
@@ -27,6 +27,7 @@
             Assert.Throws<ArgumentException>(() => EnhanceMultisequenceLearning.DataGenerator.GenerateNumberSequence(length));
         }
 
+        // Test case to verify if an ArgumentException is thrown when the length is negative.
         [Test]
         public void GenerateNumberSequence_NegativeLength_ThrowsArgumentException()
         {
@@ -37,6 +38,7 @@
             Assert.Throws<ArgumentException>(() => EnhanceMultisequenceLearning.DataGenerator.GenerateNumberSequence(length));
         }
 
+        // Test case to verify if the generated number sequence is sorted in ascending order.
         [Test]
         public void GenerateNumberSequence_ResultSortedInAscendingOrder()
         {
@@ -50,6 +52,7 @@
             Assert.IsTrue(IsSorted(result));
         }
 
+        // Test case to verify if the generated number sequence contains numbers less than 50.
         [Test]
         public void GenerateNumberSequence_ResultContainsNumbersLessThan50()
         {
@@ -63,6 +66,7 @@
             Assert.IsTrue(result.All(num => num < 50));
         }
 
+        // Method to check if an array is sorted.
         private bool IsSorted(int[] array)
         {
             for (int i = 1; i < array.Length; i++)

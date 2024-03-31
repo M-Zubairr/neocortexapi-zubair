@@ -2,6 +2,7 @@ namespace HelperMethods.nUnitTests
 {
     public class GetSubArrayTests
     {
+        // Test case to verify if the method returns the correct subarray for valid input.
         [Test]
         public void GetSubArray_ValidInput_ReturnsCorrectSubArray()
         {
@@ -18,6 +19,7 @@ namespace HelperMethods.nUnitTests
             Assert.AreEqual(expected, result);
         }
 
+        // Test case to verify if an ArgumentException is thrown when the start index is negative.
         [Test]
         public void GetSubArray_StartIndexNegative_ThrowsArgumentException()
         {
@@ -30,6 +32,7 @@ namespace HelperMethods.nUnitTests
             Assert.Throws<ArgumentException>(() => EnhanceMultisequenceLearning.HelperMethods.GetSubArray(array, startIndex, length));
         }
 
+        // Test case to verify if an ArgumentException is thrown when the length is zero.
         [Test]
         public void GetSubArray_LengthZero_ThrowsArgumentException()
         {
@@ -42,6 +45,7 @@ namespace HelperMethods.nUnitTests
             Assert.Throws<ArgumentException>(() => EnhanceMultisequenceLearning.HelperMethods.GetSubArray(array, startIndex, length));
         }
 
+        // Test case to verify if an ArgumentException is thrown when the start index is out of range.
         [Test]
         public void GetSubArray_IndexOutOfRange_ThrowsArgumentException()
         {
@@ -54,6 +58,7 @@ namespace HelperMethods.nUnitTests
             Assert.Throws<ArgumentException>(() => EnhanceMultisequenceLearning.HelperMethods.GetSubArray(array, startIndex, length));
         }
 
+        // Test case to verify if an ArgumentException is thrown when the length is out of range.
         [Test]
         public void GetSubArray_LengthOutOfRange_ThrowsArgumentException()
         {
@@ -66,6 +71,7 @@ namespace HelperMethods.nUnitTests
             Assert.Throws<ArgumentException>(() => EnhanceMultisequenceLearning.HelperMethods.GetSubArray(array, startIndex, length));
         }
 
+        // Test case to verify if an ArgumentException is thrown when the length exceeds the array length.
         [Test]
         public void GetSubArray_LengthExceedsArrayLength_ThrowsArgumentException()
         {

@@ -4,6 +4,7 @@ namespace HelperMethods.nUnitTests
 {
     public class TransformDataTests
     {
+        // Test case to verify if the method returns an empty list when input list is empty.
         [Test]
         public void TransformData_EmptyList_ReturnsEmptyList()
         {
@@ -17,15 +18,16 @@ namespace HelperMethods.nUnitTests
             Assert.IsEmpty(transformedData);
         }
 
+        // Test case to verify if the method returns transformed data for valid input.
         [Test]
         public void TransformData_ValidData_ReturnsTransformedData()
         {
             // Arrange
             List<SequenceString> data = new List<SequenceString>
-        {
-            new SequenceString { name = "Sequence1", data = "ABC" },
-            new SequenceString { name = "Sequence2", data = "DEF" }
-        };
+            {
+                new SequenceString { name = "Sequence1", data = "ABC" },
+                new SequenceString { name = "Sequence2", data = "DEF" }
+            };
 
             // Act
             List<Sequence> transformedData = EnhanceMultisequenceLearning.HelperMethods.TransformData(data);
@@ -38,6 +40,7 @@ namespace HelperMethods.nUnitTests
             Assert.AreEqual(new List<int> { 100, 101, 102 }, transformedData[1].data);
         }
 
+        // Test case to verify if an ArgumentNullException is thrown when input is null.
         [Test]
         public void TransformData_NullInput_ThrowsArgumentNullException()
         {

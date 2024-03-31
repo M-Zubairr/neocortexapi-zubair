@@ -2,6 +2,7 @@
 {
     public class GenerateMultiSequenceDatasetForAlphabetsTests
     {
+        // Test case to verify if the generated dataset contains the correct number of sequences.
         [Test]
         public void GenerateMultiSequenceDatasetForAlphabets_ValidInput_ReturnsCorrectNumberOfSequences()
         {
@@ -17,6 +18,7 @@
             Assert.AreEqual(numSequences, dataset.Length);
         }
 
+        // Test case to verify if an ArgumentOutOfRangeException is thrown when minLength is greater than maxLength.
         [Test]
         public void GenerateMultiSequenceDatasetForAlphabets_MinLengthGreaterThanMaxLength_ThrowsArgumentOutOfRangeException()
         {
@@ -29,6 +31,7 @@
             Assert.Throws<ArgumentOutOfRangeException>(() => EnhanceMultisequenceLearning.DataGenerator.GenerateMultiSequenceDatasetForAlphabets(numSequences, minLength, maxLength));
         }
 
+        // Test case to verify if an ArgumentException is thrown when numSequences is negative.
         [Test]
         public void GenerateMultiSequenceDatasetForAlphabets_NegativeNumSequences_ThrowsArgumentException()
         {
@@ -37,10 +40,11 @@
             int minLength = 3;
             int maxLength = 6;
 
-            // Act & Assert//
+            // Act & Assert
             Assert.Throws<ArgumentException>(() => EnhanceMultisequenceLearning.DataGenerator.GenerateMultiSequenceDatasetForAlphabets(numSequences, minLength, maxLength));
         }
 
+        // Test case to verify if an ArgumentException is thrown when minLength is zero.
         [Test]
         public void GenerateMultiSequenceDatasetForAlphabets_MinLengthZero_ThrowsArgumentException()
         {
@@ -53,6 +57,7 @@
             Assert.Throws<ArgumentException>(() => EnhanceMultisequenceLearning.DataGenerator.GenerateMultiSequenceDatasetForAlphabets(numSequences, minLength, maxLength));
         }
 
+        // Test case to verify if each sequence in the generated dataset falls within the specified length bounds.
         [Test]
         public void GenerateMultiSequenceDatasetForAlphabets_ResultSequencesWithinLengthBounds()
         {

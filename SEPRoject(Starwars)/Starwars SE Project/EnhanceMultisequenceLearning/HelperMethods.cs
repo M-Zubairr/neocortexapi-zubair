@@ -136,7 +136,13 @@ namespace EnhanceMultisequenceLearning
                 })
                 .ToList();
         }
-
+        /// <summary>
+        /// Generates a random sequence of unique integers within a specified range.
+        /// </summary>
+        /// <param name="size">The number of elements in the sequence.</param>
+        /// <param name="startVal">The inclusive lower bound of the range.</param>
+        /// <param name="stopVal">The inclusive upper bound of the range.</param>
+        /// <returns>An array containing a random sequence of unique integers.</returns>
         private static int[] GenerateRandomSequence(int size, int startVal, int stopVal)
         {
             var rnd = new Random();
