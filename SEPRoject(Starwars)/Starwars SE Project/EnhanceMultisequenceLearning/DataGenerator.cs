@@ -126,31 +126,4 @@ namespace EnhanceMultisequenceLearning
         }
 
     }
-
-    /// <summary>
-    /// Generates random indexes within a given range, ensuring a minimum distance of 5 between them.
-    /// </summary>
-    /// <param name="maxLength">The maximum index value.</param>
-    /// <returns>An array containing two random indexes.</returns>
-    public static int[] GenerateRandomIndexes(int maxLength)
-    {
-        if (maxLength < 5)
-            throw new ArgumentException();
-
-        int[] indexes = new int[2];
-        indexes[0] = random.Next(0, maxLength);
-        indexes[1] = random.Next(0, maxLength);
-
-        while (Math.Abs(indexes[0] - indexes[1]) < 5)
-        {
-            indexes[0] = random.Next(0, maxLength);
-            indexes[1] = random.Next(0, maxLength);
-        }
-
-        Array.Sort(indexes);
-        return indexes;
-    }
-
-
-
 }
