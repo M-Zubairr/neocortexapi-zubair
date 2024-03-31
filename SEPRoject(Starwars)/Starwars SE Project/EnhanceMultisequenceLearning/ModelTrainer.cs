@@ -64,6 +64,7 @@ namespace EnhanceMultisequenceLearning
             return CalculateAccuracy(matchCount, predictions);
         }
 
+
         private static string PredictElement(Predictor predictor, int current, int next, ref int matchCount)
         {
             Console.WriteLine($"Input: {current}");

@@ -225,5 +225,6 @@ namespace EnhanceMultisequenceLearning
             Array.Copy(array, startIndex, subArray, 0, length);
             return subArray;
         }
+
     }
 }
