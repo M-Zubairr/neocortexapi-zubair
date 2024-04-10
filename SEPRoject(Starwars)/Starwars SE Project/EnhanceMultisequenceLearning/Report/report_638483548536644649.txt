@@ -1,0 +1,689 @@
+Original Sequence S1 -> c-d-e-f-h-i-j-l-n-o-s-u-v-y
+------------------------------
+Using subsequence: E1 -> e-f-h-i-j-l-n-o
+	Input: e, Predicted next element: f
+	Correct Prediction!
+	Input: f, Predicted next element: g
+	Incorrect Prediction!
+	Input: h, Predicted next element: j
+	Incorrect Prediction!
+	Input: i, Predicted next element: k
+	Incorrect Prediction!
+	Input: j, Predicted next element: k
+	Incorrect Prediction!
+	Input: l, Predicted next element: n
+	Correct Prediction!
+	Input: n, Predicted next element: o
+	Correct Prediction!
+	3 correct out of 7 predictions, Accuracy: 42.857142857142854%
+------------------------------
+Original Sequence S2 -> a-c-h-i-m-n-t-u-x-y
+------------------------------
+Using subsequence: E2 -> a-c-h-i-m-n-t-u
+	Input: a, Predicted next element: b
+	Incorrect Prediction!
+	Input: c, Predicted next element: f
+	Incorrect Prediction!
+	Input: h, Predicted next element: i
+	Correct Prediction!
+	Input: i, Predicted next element: m
+	Correct Prediction!
+	Input: m, Predicted next element: n
+	Correct Prediction!
+	Input: n, Nothing predicted
+	Input: t, Predicted next element: u
+	Correct Prediction!
+	4 correct out of 7 predictions, Accuracy: 57.1428571%
+------------------------------
+Original Sequence S3 -> b-d-e-g-h-n-p-q-s-t-u-x-z
+------------------------------
+Using subsequence: E3 -> g-h-n-p-q-s-t-u-x
+	Input: g, Predicted next element: j
+	Incorrect Prediction!
+	Input: h, Predicted next element: j
+	Incorrect Prediction!
+	Input: n, Predicted next element: o
+	Incorrect Prediction!
+	Input: p, Predicted next element: q
+	Correct Prediction!
+	Input: q, Predicted next element: u
+	Incorrect Prediction!
+	Input: s, Predicted next element: t
+	Correct Prediction!
+	Input: t, Predicted next element: u
+	Correct Prediction!
+	Input: u, Predicted next element: w
+	Incorrect Prediction!
+	3 correct out of 8 predictions, Accuracy: 37.5%
+------------------------------
+Original Sequence S4 -> c-d-e-f-j-n-r-t-u-w-x-y-z
+------------------------------
+Using subsequence: E4 -> c-d-e-f-j
+	Input: c, Predicted next element: f
+	Incorrect Prediction!
+	Input: d, Predicted next element: e
+	Correct Prediction!
+	Input: e, Predicted next element: f
+	Correct Prediction!
+	Input: f, Predicted next element: g
+	Incorrect Prediction!
+	2 correct out of 4 predictions, Accuracy: 50%
+------------------------------
+Original Sequence S5 -> c-f-i-j-n-o-q-s-v-y-z
+------------------------------
+Using subsequence: E5 -> c-f-i-j-n-o-q-s-v-y
+	Input: c, Predicted next element: f
+	Correct Prediction!
+	Input: f, Predicted next element: i
+	Correct Prediction!
+	Input: i, Predicted next element: k
+	Incorrect Prediction!
+	Input: j, Predicted next element: k
+	Incorrect Prediction!
+	Input: n, Predicted next element: o
+	Correct Prediction!
+	Input: o, Predicted next element: q
+	Correct Prediction!
+	Input: q, Predicted next element: u
+	Incorrect Prediction!
+	Input: s, Predicted next element: t
+	Incorrect Prediction!
+	Input: v, Predicted next element: w
+	Incorrect Prediction!
+	4 correct out of 9 predictions, Accuracy: 44.44444444%
+------------------------------
+Original Sequence S6 -> a-b-c-e-g-i-j-k-l-q-r-v-y
+------------------------------
+Using subsequence: E6 -> e-g-i-j-k
+	Input: e, Predicted next element: f
+	Incorrect Prediction!
+	Input: g, Predicted next element: i
+	Correct Prediction!
+	Input: i, Predicted next element: j
+	Correct Prediction!
+	Input: j, Predicted next element: k
+	Correct Prediction!
+	3 correct out of 4 predictions, Accuracy: 75%
+------------------------------
+Original Sequence S7 -> a-d-g-h-i-j-l-m-n-p-r-t-y
+------------------------------
+Using subsequence: E7 -> d-g-h-i-j-l-m
+	Input: d, Predicted next element: g
+	Correct Prediction!
+	Input: g, Predicted next element: h
+	Correct Prediction!
+	Input: h, Predicted next element: j
+	Incorrect Prediction!
+	Input: i, Predicted next element: k
+	Incorrect Prediction!
+	Input: j, Predicted next element: l
+	Correct Prediction!
+	Input: l, Predicted next element: m
+	Correct Prediction!
+	4 correct out of 6 predictions, Accuracy: 66.6666667%
+------------------------------
+Original Sequence S8 -> a-c-f-g-i-r-v-x-y-z
+------------------------------
+Using subsequence: E8 -> a-c-f-g-i-r
+	Input: a, Predicted next element: b
+	Incorrect Prediction!
+	Input: c, Predicted next element: f
+	Correct Prediction!
+	Input: f, Predicted next element: g
+	Correct Prediction!
+	Input: g, Predicted next element: j
+	Incorrect Prediction!
+	Input: i, Predicted next element: k
+	Incorrect Prediction!
+	2 correct out of 5 predictions, Accuracy: 40%
+------------------------------
+Original Sequence S9 -> e-f-h-i-l-o-p-r-u-w-y-z
+------------------------------
+Using subsequence: E9 -> i-l-o-p-r
+	Input: i, Predicted next element: k
+	Incorrect Prediction!
+	Input: l, Predicted next element: o
+	Correct Prediction!
+	Input: o, Predicted next element: p
+	Correct Prediction!
+	Input: p, Predicted next element: q
+	Incorrect Prediction!
+	2 correct out of 4 predictions, Accuracy: 50%
+------------------------------
+Original Sequence S10 -> b-d-f-g-i-k-n-p-s-u-x
+------------------------------
+Using subsequence: E10 -> f-g-i-k-n
+	Input: f, Predicted next element: g
+	Correct Prediction!
+	Input: g, Predicted next element: j
+	Incorrect Prediction!
+	Input: i, Predicted next element: k
+	Correct Prediction!
+	Input: k, Predicted next element: l
+	Incorrect Prediction!
+	2 correct out of 4 predictions, Accuracy: 50%
+------------------------------
+Original Sequence S11 -> a-i-l-n-p-r-s-t-v-w-x-y-z
+------------------------------
+Using subsequence: E11 -> a-i-l-n-p-r-s
+	Input: a, Predicted next element: b
+	Incorrect Prediction!
+	Input: i, Predicted next element: l
+	Correct Prediction!
+	Input: l, Predicted next element: n
+	Correct Prediction!
+	Input: n, Predicted next element: p
+	Correct Prediction!
+	Input: p, Predicted next element: q
+	Incorrect Prediction!
+	Input: r, Predicted next element: s
+	Correct Prediction!
+	4 correct out of 6 predictions, Accuracy: 66.6666667%
+------------------------------
+Original Sequence S12 -> b-d-g-h-i-j-m-n-o-p-s-t-w-x-y
+------------------------------
+Using subsequence: E12 -> d-g-h-i-j-m-n-o-p-s
+	Input: d, Predicted next element: e
+	Incorrect Prediction!
+	Input: g, Predicted next element: j
+	Incorrect Prediction!
+	Input: h, Predicted next element: j
+	Incorrect Prediction!
+	Input: i, Predicted next element: j
+	Correct Prediction!
+	Input: j, Predicted next element: m
+	Correct Prediction!
+	Input: m, Predicted next element: n
+	Correct Prediction!
+	Input: n, Nothing predicted
+	Input: o, Predicted next element: p
+	Correct Prediction!
+	Input: p, Predicted next element: q
+	Incorrect Prediction!
+	4 correct out of 9 predictions, Accuracy: 44.4444444%
+------------------------------
+Original Sequence S13 -> b-e-f-g-h-i-j-m-p-q-r-t-v-y
+------------------------------
+Using subsequence: E13 -> h-i-j-m-p-q-r
+	Input: h, Predicted next element: i
+	Correct Prediction!
+	Input: i, Predicted next element: j
+	Correct Prediction!
+	Input: j, Predicted next element: k
+	Incorrect Prediction!
+	Input: m, Predicted next element: n
+	Incorrect Prediction!
+	Input: p, Predicted next element: q
+	Correct Prediction!
+	Input: q, Predicted next element: u
+	Incorrect Prediction!
+	3 correct out of 6 predictions, Accuracy: 50%
+------------------------------
+Original Sequence S14 -> b-g-h-i-p-q-u-x-y-z
+------------------------------
+Using subsequence: E14 -> i-p-q-u-x-y
+	Input: i, Predicted next element: k
+	Incorrect Prediction!
+	Input: p, Predicted next element: q
+	Correct Prediction!
+	Input: q, Predicted next element: u
+	Correct Prediction!
+	Input: u, Nothing predicted
+	Input: x, Predicted next element: z
+	Incorrect Prediction!
+	2 correct out of 5 predictions, Accuracy: 40%
+------------------------------
+Original Sequence S15 -> c-f-i-j-k-m-n-o-q-r-s-v-w
+------------------------------
+Using subsequence: E15 -> f-i-j-k-m-n-o-q
+	Input: f, Predicted next element: g
+	Incorrect Prediction!
+	Input: i, Predicted next element: j
+	Correct Prediction!
+	Input: j, Predicted next element: k
+	Correct Prediction!
+	Input: k, Predicted next element: m
+	Correct Prediction!
+	Input: m, Predicted next element: n
+	Correct Prediction!
+	Input: n, Nothing predicted
+	Input: o, Predicted next element: t
+	Incorrect Prediction!
+	4 correct out of 7 predictions, Accuracy: 57.1428571%
+------------------------------
+Original Sequence S16 -> c-d-e-g-i-k-o-q-r-s-t-u-v-x-z
+------------------------------
+Using subsequence: E16 -> r-s-t-u-v-x
+	Input: r, Predicted next element: v
+	Incorrect Prediction!
+	Input: s, Predicted next element: t
+	Correct Prediction!
+	Input: t, Predicted next element: u
+	Correct Prediction!
+	Input: u, Predicted next element: w
+	Incorrect Prediction!
+	Input: v, Predicted next element: w
+	Incorrect Prediction!
+	2 correct out of 5 predictions, Accuracy: 40%
+------------------------------
+Original Sequence S17 -> a-b-c-e-f-g-h-i-k-l-v-w-y-z
+------------------------------
+Using subsequence: E17 -> b-c-e-f-g-h
+	Input: b, Predicted next element: d
+	Incorrect Prediction!
+	Input: c, Predicted next element: f
+	Incorrect Prediction!
+	Input: e, Predicted next element: f
+	Correct Prediction!
+	Input: f, Predicted next element: g
+	Correct Prediction!
+	Input: g, Predicted next element: u
+	Incorrect Prediction!
+	2 correct out of 5 predictions, Accuracy: 40%
+------------------------------
+Original Sequence S18 -> b-d-f-i-k-l-m-n-o-p-r-v-x-y-z
+------------------------------
+Using subsequence: E18 -> b-d-f-i-k
+	Input: b, Predicted next element: d
+	Correct Prediction!
+	Input: d, Predicted next element: f
+	Correct Prediction!
+	Input: f, Predicted next element: i
+	Correct Prediction!
+	Input: i, Predicted next element: k
+	Correct Prediction!
+	4 correct out of 4 predictions, Accuracy: 100%
+------------------------------
+Original Sequence S19 -> c-f-g-j-k-l-m-n-p-q-u-v-w-x-z
+------------------------------
+Using subsequence: E19 -> k-l-m-n-p
+	Input: k, Predicted next element: l
+	Correct Prediction!
+	Input: l, Predicted next element: n
+	Incorrect Prediction!
+	Input: m, Predicted next element: n
+	Correct Prediction!
+	Input: n, Nothing predicted
+	2 correct out of 4 predictions, Accuracy: 50%
+------------------------------
+Original Sequence S20 -> a-b-d-e-h-j-k-l-n-o-t-u-w-x-z
+------------------------------
+Using subsequence: E20 -> a-b-d-e-h-j-k
+	Input: a, Predicted next element: b
+	Correct Prediction!
+	Input: b, Predicted next element: d
+	Correct Prediction!
+	Input: d, Predicted next element: e
+	Correct Prediction!
+	Input: e, Predicted next element: h
+	Correct Prediction!
+	Input: h, Predicted next element: j
+	Correct Prediction!
+	Input: j, Predicted next element: k
+	Correct Prediction!
+	6 correct out of 6 predictions, Accuracy: 100%
+------------------------------
+Original Sequence S1 -> c-d-e-f-h-i-j-l-n-o-s-u-v-y
+------------------------------
+Using subsequence: T1 -> i-j-l-n-o
+	Input: i, Predicted next element: k
+	Incorrect Prediction!
+	Input: j, Predicted next element: k
+	Incorrect Prediction!
+	Input: l, Predicted next element: n
+	Correct Prediction!
+	Input: n, Predicted next element: o
+	Correct Prediction!
+	2 correct out of 4 predictions, Accuracy: 50%
+------------------------------
+Original Sequence S2 -> a-c-h-i-m-n-t-u-x-y
+------------------------------
+Using subsequence: T2 -> h-i-m-n-t-u
+	Input: h, Predicted next element: j
+	Incorrect Prediction!
+	Input: i, Predicted next element: k
+	Incorrect Prediction!
+	Input: m, Predicted next element: n
+	Correct Prediction!
+	Input: n, Nothing predicted
+	Input: t, Predicted next element: u
+	Correct Prediction!
+	2 correct out of 5 predictions, Accuracy: 40%
+------------------------------
+Original Sequence S3 -> b-d-e-g-h-n-p-q-s-t-u-x-z
+------------------------------
+Using subsequence: T3 -> n-p-q-s-t
+	Input: n, Predicted next element: o
+	Incorrect Prediction!
+	Input: p, Predicted next element: q
+	Correct Prediction!
+	Input: q, Predicted next element: u
+	Incorrect Prediction!
+	Input: s, Predicted next element: t
+	Correct Prediction!
+	2 correct out of 4 predictions, Accuracy: 50%
+------------------------------
+Original Sequence S4 -> c-d-e-f-j-n-r-t-u-w-x-y-z
+------------------------------
+Using subsequence: T4 -> f-j-n-r-t-u-w-x
+	Input: f, Predicted next element: g
+	Incorrect Prediction!
+	Input: j, Predicted next element: k
+	Incorrect Prediction!
+	Input: n, Predicted next element: o
+	Incorrect Prediction!
+	Input: r, Predicted next element: v
+	Incorrect Prediction!
+	Input: t, Predicted next element: u
+	Correct Prediction!
+	Input: u, Predicted next element: w
+	Correct Prediction!
+	Input: w, Predicted next element: x
+	Correct Prediction!
+	3 correct out of 7 predictions, Accuracy: 42.857142857142854%
+------------------------------
+Original Sequence S5 -> c-f-i-j-n-o-q-s-v-y-z
+------------------------------
+Using subsequence: T5 -> i-j-n-o-q
+	Input: i, Predicted next element: k
+	Incorrect Prediction!
+	Input: j, Predicted next element: n
+	Correct Prediction!
+	Input: n, Predicted next element: o
+	Correct Prediction!
+	Input: o, Predicted next element: t
+	Incorrect Prediction!
+	2 correct out of 4 predictions, Accuracy: 50%
+------------------------------
+Original Sequence S6 -> a-b-c-e-g-i-j-k-l-q-r-v-y
+------------------------------
+Using subsequence: T6 -> a-b-c-e-g-i-j-k
+	Input: a, Predicted next element: b
+	Correct Prediction!
+	Input: b, Predicted next element: c
+	Correct Prediction!
+	Input: c, Predicted next element: f
+	Incorrect Prediction!
+	Input: e, Predicted next element: f
+	Incorrect Prediction!
+	Input: g, Predicted next element: j
+	Incorrect Prediction!
+	Input: i, Predicted next element: k
+	Incorrect Prediction!
+	Input: j, Predicted next element: k
+	Correct Prediction!
+	3 correct out of 7 predictions, Accuracy: 42.8571429%
+------------------------------
+Original Sequence S7 -> a-d-g-h-i-j-l-m-n-p-r-t-y
+------------------------------
+Using subsequence: T7 -> h-i-j-l-m
+	Input: h, Predicted next element: j
+	Incorrect Prediction!
+	Input: i, Predicted next element: j
+	Correct Prediction!
+	Input: j, Predicted next element: l
+	Correct Prediction!
+	Input: l, Predicted next element: n
+	Incorrect Prediction!
+	2 correct out of 4 predictions, Accuracy: 50%
+------------------------------
+Original Sequence S8 -> a-c-f-g-i-r-v-x-y-z
+------------------------------
+Using subsequence: T8 -> a-c-f-g-i-r-v-x
+	Input: a, Predicted next element: b
+	Incorrect Prediction!
+	Input: c, Predicted next element: f
+	Correct Prediction!
+	Input: f, Predicted next element: g
+	Correct Prediction!
+	Input: g, Predicted next element: j
+	Incorrect Prediction!
+	Input: i, Predicted next element: k
+	Incorrect Prediction!
+	Input: r, Predicted next element: v
+	Correct Prediction!
+	Input: v, Nothing predicted
+	3 correct out of 7 predictions, Accuracy: 42.857142857142854%
+------------------------------
+Original Sequence S9 -> e-f-h-i-l-o-p-r-u-w-y-z
+------------------------------
+Using subsequence: T9 -> e-f-h-i-l-o
+	Input: e, Predicted next element: f
+	Correct Prediction!
+	Input: f, Predicted next element: g
+	Incorrect Prediction!
+	Input: h, Predicted next element: i
+	Correct Prediction!
+	Input: i, Predicted next element: l
+	Correct Prediction!
+	Input: l, Predicted next element: n
+	Incorrect Prediction!
+	3 correct out of 5 predictions, Accuracy: 60%
+------------------------------
+Original Sequence S10 -> b-d-f-g-i-k-n-p-s-u-x
+------------------------------
+Using subsequence: T10 -> b-d-f-g-i-k-n-p-s-u
+	Input: b, Predicted next element: d
+	Correct Prediction!
+	Input: d, Predicted next element: f
+	Correct Prediction!
+	Input: f, Predicted next element: i
+	Incorrect Prediction!
+	Input: g, Predicted next element: j
+	Incorrect Prediction!
+	Input: i, Predicted next element: k
+	Correct Prediction!
+	Input: k, Predicted next element: n
+	Correct Prediction!
+	Input: n, Predicted next element: o
+	Incorrect Prediction!
+	Input: p, Predicted next element: q
+	Incorrect Prediction!
+	Input: s, Predicted next element: t
+	Incorrect Prediction!
+	4 correct out of 9 predictions, Accuracy: 44.4444444%
+------------------------------
+Original Sequence S11 -> a-i-l-n-p-r-s-t-v-w-x-y-z
+------------------------------
+Using subsequence: T11 -> i-l-n-p-r-s
+	Input: i, Predicted next element: k
+	Incorrect Prediction!
+	Input: l, Predicted next element: n
+	Correct Prediction!
+	Input: n, Predicted next element: o
+	Incorrect Prediction!
+	Input: p, Predicted next element: r
+	Correct Prediction!
+	Input: r, Predicted next element: v
+	Incorrect Prediction!
+	2 correct out of 5 predictions, Accuracy: 40%
+------------------------------
+Original Sequence S12 -> b-d-g-h-i-j-m-n-o-p-s-t-w-x-y
+------------------------------
+Using subsequence: T12 -> g-h-i-j-m-n-o
+	Input: g, Predicted next element: h
+	Correct Prediction!
+	Input: h, Predicted next element: i
+	Correct Prediction!
+	Input: i, Predicted next element: k
+	Incorrect Prediction!
+	Input: j, Predicted next element: k
+	Incorrect Prediction!
+	Input: m, Predicted next element: n
+	Correct Prediction!
+	Input: n, Nothing predicted
+	3 correct out of 6 predictions, Accuracy: 50%
+------------------------------
+Original Sequence S13 -> b-e-f-g-h-i-j-m-p-q-r-t-v-y
+------------------------------
+Using subsequence: T13 -> e-f-g-h-i-j-m-p-q
+	Input: e, Predicted next element: f
+	Correct Prediction!
+	Input: f, Predicted next element: g
+	Correct Prediction!
+	Input: g, Predicted next element: u
+	Incorrect Prediction!
+	Input: h, Predicted next element: j
+	Incorrect Prediction!
+	Input: i, Predicted next element: k
+	Incorrect Prediction!
+	Input: j, Predicted next element: k
+	Incorrect Prediction!
+	Input: m, Predicted next element: n
+	Incorrect Prediction!
+	Input: p, Predicted next element: q
+	Correct Prediction!
+	3 correct out of 8 predictions, Accuracy: 37.5%
+------------------------------
+Original Sequence S14 -> b-g-h-i-p-q-u-x-y-z
+------------------------------
+Using subsequence: T14 -> h-i-p-q-u-x-y
+	Input: h, Predicted next element: j
+	Incorrect Prediction!
+	Input: i, Predicted next element: p
+	Correct Prediction!
+	Input: p, Predicted next element: q
+	Correct Prediction!
+	Input: q, Predicted next element: u
+	Correct Prediction!
+	Input: u, Nothing predicted
+	Input: x, Predicted next element: z
+	Incorrect Prediction!
+	3 correct out of 6 predictions, Accuracy: 50%
+------------------------------
+Original Sequence S15 -> c-f-i-j-k-m-n-o-q-r-s-v-w
+------------------------------
+Using subsequence: T15 -> i-j-k-m-n-o-q-r-s-v
+	Input: i, Predicted next element: j
+	Correct Prediction!
+	Input: j, Predicted next element: k
+	Correct Prediction!
+	Input: k, Predicted next element: l
+	Incorrect Prediction!
+	Input: m, Predicted next element: n
+	Correct Prediction!
+	Input: n, Nothing predicted
+	Input: o, Predicted next element: t
+	Incorrect Prediction!
+	Input: q, Predicted next element: r
+	Correct Prediction!
+	Input: r, Predicted next element: s
+	Correct Prediction!
+	Input: s, Predicted next element: t
+	Incorrect Prediction!
+	5 correct out of 9 predictions, Accuracy: 55.5555556%
+------------------------------
+Original Sequence S16 -> c-d-e-g-i-k-o-q-r-s-t-u-v-x-z
+------------------------------
+Using subsequence: T16 -> c-d-e-g-i-k-o-q-r-s-t-u-v-x
+	Input: c, Predicted next element: f
+	Incorrect Prediction!
+	Input: d, Predicted next element: e
+	Correct Prediction!
+	Input: e, Predicted next element: h
+	Incorrect Prediction!
+	Input: g, Predicted next element: j
+	Incorrect Prediction!
+	Input: i, Predicted next element: k
+	Correct Prediction!
+	Input: k, Predicted next element: l
+	Incorrect Prediction!
+	Input: o, Predicted next element: t
+	Incorrect Prediction!
+	Input: q, Predicted next element: u
+	Incorrect Prediction!
+	Input: r, Predicted next element: v
+	Incorrect Prediction!
+	Input: s, Predicted next element: t
+	Correct Prediction!
+	Input: t, Predicted next element: u
+	Correct Prediction!
+	Input: u, Predicted next element: w
+	Incorrect Prediction!
+	Input: v, Predicted next element: w
+	Incorrect Prediction!
+	4 correct out of 13 predictions, Accuracy: 30.76923076923077%
+------------------------------
+Original Sequence S17 -> a-b-c-e-f-g-h-i-k-l-v-w-y-z
+------------------------------
+Using subsequence: T17 -> b-c-e-f-g-h-i-k-l-v-w-y
+	Input: b, Predicted next element: d
+	Incorrect Prediction!
+	Input: c, Predicted next element: f
+	Incorrect Prediction!
+	Input: e, Predicted next element: f
+	Correct Prediction!
+	Input: f, Predicted next element: g
+	Correct Prediction!
+	Input: g, Predicted next element: u
+	Incorrect Prediction!
+	Input: h, Predicted next element: j
+	Incorrect Prediction!
+	Input: i, Predicted next element: k
+	Correct Prediction!
+	Input: k, Predicted next element: l
+	Correct Prediction!
+	Input: l, Nothing predicted
+	Input: v, Predicted next element: w
+	Correct Prediction!
+	Input: w, Predicted next element: x
+	Incorrect Prediction!
+	5 correct out of 11 predictions, Accuracy: 45.45454545454545%
+------------------------------
+Original Sequence S18 -> b-d-f-i-k-l-m-n-o-p-r-v-x-y-z
+------------------------------
+Using subsequence: T18 -> l-m-n-o-p-r-v-x
+	Input: l, Predicted next element: m
+	Correct Prediction!
+	Input: m, Predicted next element: n
+	Correct Prediction!
+	Input: n, Nothing predicted
+	Input: o, Predicted next element: p
+	Correct Prediction!
+	Input: p, Predicted next element: r
+	Correct Prediction!
+	Input: r, Predicted next element: v
+	Correct Prediction!
+	Input: v, Nothing predicted
+	5 correct out of 7 predictions, Accuracy: 71.4285714%
+------------------------------
+Original Sequence S19 -> c-f-g-j-k-l-m-n-p-q-u-v-w-x-z
+------------------------------
+Using subsequence: T19 -> k-l-m-n-p-q-u-v-w-x
+	Input: k, Predicted next element: l
+	Correct Prediction!
+	Input: l, Predicted next element: n
+	Incorrect Prediction!
+	Input: m, Predicted next element: n
+	Correct Prediction!
+	Input: n, Nothing predicted
+	Input: p, Predicted next element: q
+	Correct Prediction!
+	Input: q, Predicted next element: u
+	Correct Prediction!
+	Input: u, Nothing predicted
+	Input: v, Predicted next element: w
+	Correct Prediction!
+	Input: w, Predicted next element: x
+	Correct Prediction!
+	6 correct out of 9 predictions, Accuracy: 66.66666666666666%
+------------------------------
+Original Sequence S20 -> a-b-d-e-h-j-k-l-n-o-t-u-w-x-z
+------------------------------
+Using subsequence: T20 -> j-k-l-n-o-t-u-w
+	Input: j, Predicted next element: k
+	Correct Prediction!
+	Input: k, Predicted next element: l
+	Correct Prediction!
+	Input: l, Predicted next element: n
+	Correct Prediction!
+	Input: n, Predicted next element: o
+	Correct Prediction!
+	Input: o, Predicted next element: t
+	Correct Prediction!
+	Input: t, Predicted next element: u
+	Correct Prediction!
+	Input: u, Predicted next element: w
+	Correct Prediction!
+	7 correct out of 7 predictions, Accuracy: 100%
+------------------------------

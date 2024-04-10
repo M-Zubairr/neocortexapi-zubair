@@ -31,7 +31,7 @@ namespace EnhanceMultisequenceLearning
                     SequenceData = item.data
                 };
 
-                double accuracy = PredictNextElement(predictor, item.data, report);
+                double accuracy = PredictNextElement(predictor, item.data, report, isNumberDatatset);
                 report.Accuracy = accuracy;
                 reports.Add(report);
 
@@ -46,7 +46,7 @@ namespace EnhanceMultisequenceLearning
                     SequenceData = item.data
                 };
 
-                double accuracy = PredictNextElement(predictor, item.data, report);
+                double accuracy = PredictNextElement(predictor, item.data, report, isNumberDatatset);
                 report.Accuracy = accuracy;
                 reports.Add(report);
 
@@ -63,7 +63,7 @@ namespace EnhanceMultisequenceLearning
         /// <param name="list">The input sequence for which predictions are made.</param>
         /// <param name="report">The report object to store prediction logs.</param>
         /// <returns>The accuracy of the predictions.</returns>
-        private static double PredictNextElement(Predictor predictor, int[] list, Report report)
+        private static double PredictNextElement(Predictor predictor, int[] list, Report report, bool isNumberDataset)
         {
             int matchCount = 0, predictions = 0;
             List<string> logs = new List<string>();
@@ -75,11 +75,13 @@ namespace EnhanceMultisequenceLearning
                 int current = list[i];
                 int next = list[i + 1];
 
-                logs.Add(PredictElement(predictor, current, next, ref matchCount));
+                logs.Add(PredictElement(predictor, current, next, ref matchCount, isNumberDataset));
                 predictions++;
             }
 
             report.PredictionLog = logs;
+            report.Matches = matchCount;
+            report.TotalPredictions = predictions;
             return CalculateAccuracy(matchCount, predictions);
         }
         /// <summary>
@@ -90,9 +92,10 @@ namespace EnhanceMultisequenceLearning
         /// <param name="next">The next element in the sequence (ground truth).</param>
         /// <param name="matchCount">A reference to the count of correct predictions to be updated.</param>
         /// <returns>A string representing the prediction and its accuracy.</returns>
-        private static string PredictElement(Predictor predictor, int current, int next, ref int matchCount)
+        private static string PredictElement(Predictor predictor, int current, int next, ref int matchCount, bool isNumberDataset)
         {
-            Console.WriteLine($"Input: {current}");
+            char inputChar = (char)current;
+            //Console.WriteLine($"Input: {inputChar}");
             var predictions = predictor.Predict(current);
             // Check if predictions are made
             if (predictions.Any())
@@ -101,17 +104,37 @@ namespace EnhanceMultisequenceLearning
                 var highestPrediction = predictions.OrderByDescending(p => p.Similarity).First();
                 string predictedSequence = highestPrediction.PredictedInput.Split('-').First();
                 int predictedNext = int.Parse(highestPrediction.PredictedInput.Split('-').Last());
+                char predictedInput = (char)predictedNext;
 
-                Console.WriteLine($"Predicted Sequence: {predictedSequence} - Predicted next element: {predictedNext}");
+                string result = "";
                 if (predictedNext == next)
+                {
                     matchCount++;
+                    result = "\tCorrect Prediction!";
+                }
+                else 
+                {
+                    result = "\tIncorrect Prediction!";
+                }
 
-                return $"Input: {current}, Predicted Sequence: {predictedSequence}, Predicted next element: {predictedNext}";
+                if (isNumberDataset)
+                {
+                    Console.WriteLine($"Input: {current} - Predicted next element: {predictedNext}\n{result}");
+                    return $"Input: {current}, Predicted next element: {predictedNext}\n{result}";
+                }
+                else 
+                {
+                    Console.WriteLine($"Input: {inputChar} - Predicted next element: {predictedInput}\n{result}");
+                    return $"Input: {inputChar}, Predicted next element: {predictedInput}\n{result}";
+                }
             }
             else
             {
                 Console.WriteLine("Nothing predicted");
-                return $"Input: {current}, Nothing predicted";
+                if (isNumberDataset)
+                    return $"Input: {current}, Nothing predicted";
+                else
+                    return $"Input: {inputChar}, Nothing predicted";
             }
         }
         /// <summary>

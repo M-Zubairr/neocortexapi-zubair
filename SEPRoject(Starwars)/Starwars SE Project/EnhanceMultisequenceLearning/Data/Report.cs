@@ -14,6 +14,8 @@ namespace EnhanceMultisequenceLearning.Data
         public int[] SequenceData { get; set; }
         public List<string> PredictionLog { get; set; }
         public double Accuracy { get; set; }
+        public int Matches { get; set; }
+        public int TotalPredictions {  get; set; }
 
     }
 }

@@ -1,4 +1,5 @@
 ﻿using EnhanceMultisequenceLearning.Data;
+using System.Collections.Generic;
 
 namespace EnhanceMultisequenceLearning
 {
@@ -165,12 +166,15 @@ namespace EnhanceMultisequenceLearning
             // Get base path for file operations
             string basePath = AppDomain.CurrentDomain.BaseDirectory;
 
+            List<string> trainingSequece = new List<string>();
+
             // Read datasets based on data type
             if (!isNumberDataset)
             {
                 List<SequenceString> sequencesString = FileManager.ReadDataset<SequenceString>(basePath, datasetFiles[0]);
                 List<SequenceString> sequencesEvalString = FileManager.ReadDataset<SequenceString>(basePath, datasetFiles[1]);
                 List<SequenceString> sequencesTestString = FileManager.ReadDataset<SequenceString>(basePath, datasetFiles[2]);
+                trainingSequece.AddRange(sequencesString.Select(x => string.Join("-", x.data.ToLower().ToCharArray())));
 
                 // Run experiment and get reports
                 reports = ModelTrainer.RunMultiSequenceLearningExperiment(
@@ -183,13 +187,13 @@ namespace EnhanceMultisequenceLearning
                 List<Sequence> sequences = FileManager.ReadDataset<Sequence>(basePath, datasetFiles[0]);
                 List<Sequence> sequencesEval = FileManager.ReadDataset<Sequence>(basePath, datasetFiles[1]);
                 List<Sequence> sequencesTest = FileManager.ReadDataset<Sequence>(basePath, datasetFiles[2]);
-
+                trainingSequece.AddRange(sequences.Select(x => string.Join("-", x.data)));
                 // Run experiment and get reports
                 reports = ModelTrainer.RunMultiSequenceLearningExperiment(sequences, sequencesEval, sequencesTest, true, index);
             }
 
             // Write reports to file
-            FileManager.WriteReport(reports, basePath);
+            FileManager.WriteReport(trainingSequece, reports, basePath, isNumberDataset);
         }
     }
 }

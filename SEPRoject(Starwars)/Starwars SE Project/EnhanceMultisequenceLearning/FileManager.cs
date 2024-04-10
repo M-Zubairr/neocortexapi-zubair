@@ -154,16 +154,20 @@ namespace EnhanceMultisequenceLearning
         /// </summary>
         /// <param name="reports">The reports to be written.</param>
         /// <param name="basePath">The base path where the reports will be saved.</param>
-        public static void WriteReport(List<Report> reports, string basePath)
+        public static void WriteReport(List<string> trainingData, List<Report> reports, string basePath, bool isNumberDataset)
         {
             string reportFolder = EnsureDirectory(Path.Combine(basePath, ReportFolder));
             string reportPath = Path.Combine(reportFolder, $"report_{DateTime.Now.Ticks}.txt");
 
             using (StreamWriter sw = File.CreateText(reportPath))
             {
+                int i = 0;
+                int noOfSequences = reports.Count / 2;
                 foreach (Report report in reports)
                 {
-                    WriteReportContent(sw, report);
+                    sw.WriteLine($"Original Sequence S{(i% noOfSequences) +1} -> {trainingData[i % noOfSequences]}");
+                    WriteReportContent(sw, report, isNumberDataset);
+                    i++;
                 }
             }
         }
@@ -185,15 +189,18 @@ namespace EnhanceMultisequenceLearning
         /// </summary>
         /// <param name="sw">The StreamWriter to write to.</param>
         /// <param name="report">The report to write.</param>
-        private static void WriteReportContent(StreamWriter sw, Report report)
+        private static void WriteReportContent(StreamWriter sw, Report report, bool isNumberDataset)
         {
             sw.WriteLine("------------------------------");
-            sw.WriteLine($"Using test sequence: {report.SequenceName} -> {string.Join("-", report.SequenceData)}");
+            if (isNumberDataset)
+                sw.WriteLine($"Using subsequence: {report.SequenceName} -> {string.Join("-", report.SequenceData)}");
+            else
+                sw.WriteLine($"Using subsequence: {report.SequenceName} -> {string.Join("-", report.SequenceData.Select(x => (char)x))}");
             foreach (string log in report.PredictionLog)
             {
                 sw.WriteLine($"\t{log}");
             }
-            sw.WriteLine($"\tAccuracy: {report.Accuracy}%");
+            sw.WriteLine($"\t{report.Matches} correct out of {report.TotalPredictions} predictions, Accuracy: {report.Accuracy}%");
             sw.WriteLine("------------------------------");
         }
     }

@@ -235,7 +235,7 @@ namespace EnhanceMultisequenceLearning
                     double accuracy = (double)matches / (double)sequenceKeyPair.data.Length * 100.0;
 
                     Debug.WriteLine($"Cycle: {cycle}\tMatches={matches} of {sequenceKeyPair.data.Length}\t {accuracy}% - Thread {index}");
-                    Console.WriteLine($"Cycle: {cycle}\tMatches={matches} of {sequenceKeyPair.data.Length}\t {accuracy} - Thread {index}%");
+                    Console.WriteLine($"Cycle: {cycle}\tMatches={matches} of {sequenceKeyPair.data.Length}\t {accuracy}% - Thread {index}");
 
                     if (accuracy >= maxPossibleAccuraccy)
                     {
